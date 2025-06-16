@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "Province_API.APIController.LocationController",
+    "Method": "getDistricts",
+    "RelativePath": "api/Location/district/{provinceID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "provinceID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Province_API.APIController.LocationController",
+    "Method": "getProvinces",
+    "RelativePath": "api/Location/provinces",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Province_API.APIController.LocationController",
+    "Method": "getWards",
+    "RelativePath": "api/Location/ward/{districtID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "districtID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

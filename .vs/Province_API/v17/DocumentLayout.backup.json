@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\WorkSpace\\Mobiphone_Intern\\Province_API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\province_api\\province_api\\infrastructure\\repositories\\jsonservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\infrastructure\\repositories\\jsonservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JsonServices.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Province_API\\Province_API\\Infrastructure\\Repositories\\JsonServices.cs",
+              "RelativeDocumentMoniker": "Province_API\\Infrastructure\\Repositories\\JsonServices.cs",
+              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Province_API\\Province_API\\Infrastructure\\Repositories\\JsonServices.cs",
+              "RelativeToolTip": "Province_API\\Infrastructure\\Repositories\\JsonServices.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T09:57:39.672Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
