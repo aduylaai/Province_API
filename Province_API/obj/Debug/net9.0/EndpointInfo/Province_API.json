@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Location/provinces": {
+    "/api/Location/unit": {
       "get": {
         "tags": [
           "Location"
@@ -17,14 +17,14 @@
         }
       }
     },
-    "/api/Location/district/{provinceID}": {
+    "/api/Location/unit/{parentID}": {
       "get": {
         "tags": [
           "Location"
         ],
         "parameters": [
           {
-            "name": "provinceID",
+            "name": "parentID",
             "in": "path",
             "required": true,
             "schema": {
@@ -39,29 +39,7 @@
         }
       }
     },
-    "/api/Location/ward/{districtID}": {
-      "get": {
-        "tags": [
-          "Location"
-        ],
-        "parameters": [
-          {
-            "name": "districtID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Location/name/{id}": {
+    "/api/Location/unit/id/{id}": {
       "get": {
         "tags": [
           "Location"

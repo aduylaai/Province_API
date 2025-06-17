@@ -14,16 +14,13 @@ namespace Province_API.Controller
             _service = service;
         }
 
-        [HttpGet("provinces")]
-        public IActionResult getProvinces() => Ok(_service.GetAdministrativeUnit(null));
+        [HttpGet("unit")]
+        public IActionResult getProvinces() => Ok(_service.GetProvinces());
 
-        [HttpGet("district/{provinceID}")]
-        public IActionResult getDistricts(string provinceID) => Ok(_service.GetAdministrativeUnit(provinceID));
+        [HttpGet("unit/{parentID}")]
+        public IActionResult getProvinces(string parentID) => Ok(_service.GetAdministrativeUnits(parentID));
 
-        [HttpGet("ward/{districtID}")]
-        public IActionResult getWards(string districtID) => Ok(_service.GetAdministrativeUnit(districtID));
-
-        [HttpGet("unit/{id}")]
+        [HttpGet("unit/id/{id}")]
         public IActionResult getAdministrativeUnitName(string id)
         {
             try

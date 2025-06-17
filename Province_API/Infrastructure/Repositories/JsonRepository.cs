@@ -30,9 +30,9 @@ namespace Province_API.Location.Infrastructure.Repositories
             }
         }
 
-        public List<AdministrativeUnit_DTO> GetAll()
+        public List<AdministrativeUnitDTO> GetAll()
         {
-            return _administrativeUnits.Select(unit => new AdministrativeUnit_DTO
+            return _administrativeUnits.Select(unit => new AdministrativeUnitDTO
             {
                 Id = unit.Id,
                 Name = unit.Name,

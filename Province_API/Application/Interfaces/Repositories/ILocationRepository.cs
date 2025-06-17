@@ -4,7 +4,7 @@ namespace Province_API.Application.Interfaces.Repositories
 {
     public interface ILocationRepository
     {
-        List<AdministrativeUnit_DTO> GetAll();
+        List<AdministrativeUnitDTO> GetAll();
 
     }
 }

@@ -1,14 +1,24 @@
 [
   {
     "ContainingType": "Province_API.Controller.LocationController",
-    "Method": "getDistricts",
-    "RelativePath": "api/Location/district/{provinceID}",
+    "Method": "getProvinces",
+    "RelativePath": "api/Location/unit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Province_API.Controller.LocationController",
+    "Method": "getProvinces",
+    "RelativePath": "api/Location/unit/{parentID}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "provinceID",
+        "Name": "parentID",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -18,39 +28,13 @@
   {
     "ContainingType": "Province_API.Controller.LocationController",
     "Method": "getAdministrativeUnitName",
-    "RelativePath": "api/Location/name/{id}",
+    "RelativePath": "api/Location/unit/id/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Province_API.Controller.LocationController",
-    "Method": "getProvinces",
-    "RelativePath": "api/Location/provinces",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Province_API.Controller.LocationController",
-    "Method": "getWards",
-    "RelativePath": "api/Location/ward/{districtID}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "districtID",
         "Type": "System.String",
         "IsRequired": true
       }
