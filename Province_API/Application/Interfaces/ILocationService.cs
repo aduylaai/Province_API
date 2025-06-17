@@ -7,5 +7,6 @@ namespace Province_API.Application.Interfaces
         List<AdministrativeUnit_DTO> GetProvinces();
         List<AdministrativeUnit_DTO> GetDistricts(string provinceId);
         List<AdministrativeUnit_DTO> GetWards(string districtId);
+
     }
 }
