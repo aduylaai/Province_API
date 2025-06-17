@@ -8,7 +8,7 @@ namespace Province_API.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection service) {
 
-            service.AddScoped<ILocationService, GetAdministrativeUnit>();
+            service.AddScoped<ILocationService, LocationService>();
             //Add other application services here if needed
             return service;
         }
