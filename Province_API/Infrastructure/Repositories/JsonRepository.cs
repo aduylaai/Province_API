@@ -12,6 +12,7 @@ namespace Province_API.Location.Infrastructure.Repositories
     public class JsonRepository : ILocationRepository
     {
         private readonly List<AdminstrativeUnit> _administrativeUnits;
+       
 
         // Constructor to initialize the administrative units from a JSON file
         public JsonRepository()

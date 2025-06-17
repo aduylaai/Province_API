@@ -22,5 +22,18 @@ namespace Province_API.Controller
 
         [HttpGet("ward/{districtID}")]
         public IActionResult getWards(string districtID) => Ok(_service.GetAdministrativeUnit(districtID));
+
+        [HttpGet("unit/{id}")]
+        public IActionResult getAdministrativeUnitName(string id)
+        {
+            try
+            {
+                return Ok(_service.GetAdministrativeUnitName(id));
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

@@ -8,31 +8,30 @@ namespace Province_API.Application.Services
     public class LocationService : ILocationService
     {
         private readonly ILocationRepository _locationRepository;
-        private List<AdministrativeUnit_DTO> all;
+        private readonly List<AdministrativeUnit_DTO> _allUnit;
         public LocationService(ILocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
-            all = _locationRepository.GetAll();
-            if (all == null || all.Count == 0)
-            {
-                throw new Exception("Cannot access database, please re-check!");
-            }
+            _allUnit = _locationRepository.GetAll();
         }
 
         public List<AdministrativeUnit_DTO> GetAdministrativeUnit(string? parentID)
         {
             if (parentID == null)
             {
-                return all
+                return _allUnit
                    .Where(x => x.ParentId == null)
                    .ToList();
             }
             else
             {
-                return all
+                return _allUnit
                     .Where(x => x.ParentId == parentID).ToList();
             }
         }
+
+        public AdministrativeUnit_DTO GetAdministrativeUnitName(string id) => _allUnit
+            .FirstOrDefault(x => x.Id == id) ?? throw new KeyNotFoundException($"Administrative unit with ID {id} not found."); 
 
 
         // ---

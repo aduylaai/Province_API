@@ -1,6 +1,6 @@
-@Province_API_HostAddress = http://localhost:5233
+@Province_API_HostAddress = https://localhost:7063/api/Location
 
-GET {{Province_API_HostAddress}}/weatherforecast/
-Accept: application/json
+GET {{Province_API_HostAddress}}/provinces/
+Accept: */*
 
 ###

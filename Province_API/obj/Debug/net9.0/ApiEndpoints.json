@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "Province_API.Controller.LocationController",
+    "Method": "getAdministrativeUnitName",
+    "RelativePath": "api/Location/name/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Province_API.Controller.LocationController",
     "Method": "getProvinces",
     "RelativePath": "api/Location/provinces",
     "HttpMethod": "GET",
