@@ -5,7 +5,6 @@ using Province_API.Location.Infrastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddControllers();
 builder.Services.AddSingleton<ILocationService, JsonServices>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

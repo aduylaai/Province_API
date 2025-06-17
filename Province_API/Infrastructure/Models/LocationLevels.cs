@@ -1,4 +1,4 @@
-﻿namespace Province_API.Infrastructure.Utils
+﻿namespace Province_API.Infrastructure.Models
 {
     public class LocationLevels
     {

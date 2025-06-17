@@ -1,4 +1,4 @@
-﻿namespace Province_API.Domain
+﻿namespace Province_API.Domain.Entities
 {
     public class AdminstrativeUnit
     {

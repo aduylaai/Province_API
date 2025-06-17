@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Province_API.Application.Interfaces;
 
-namespace Province_API.APIController
+namespace Province_API.Controller
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -289,11 +289,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WorkSpace\\Mobiphone_Intern\\Province_API\\Province_API\\Province_API.csproj",
+      "projectUniqueName": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Province_API.csproj",
       "projectName": "Province_API",
-      "projectPath": "D:\\WorkSpace\\Mobiphone_Intern\\Province_API\\Province_API\\Province_API.csproj",
+      "projectPath": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Province_API.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\WorkSpace\\Mobiphone_Intern\\Province_API\\Province_API\\obj\\",
+      "outputPath": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

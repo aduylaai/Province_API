@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "Province_API.APIController.LocationController",
+    "ContainingType": "Province_API.Controller.LocationController",
     "Method": "getDistricts",
     "RelativePath": "api/Location/district/{provinceID}",
     "HttpMethod": "GET",
@@ -16,7 +16,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Province_API.APIController.LocationController",
+    "ContainingType": "Province_API.Controller.LocationController",
     "Method": "getProvinces",
     "RelativePath": "api/Location/provinces",
     "HttpMethod": "GET",
@@ -26,7 +26,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Province_API.APIController.LocationController",
+    "ContainingType": "Province_API.Controller.LocationController",
     "Method": "getWards",
     "RelativePath": "api/Location/ward/{districtID}",
     "HttpMethod": "GET",
