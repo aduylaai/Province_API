@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Province_API.Application;
 using Province_API.Application.Interfaces;
-using Province_API.Application.Usecase;
+using Province_API.Application.Services;
 using Province_API.Infrastructure;
 using Province_API.Location.Infrastructure.Repositories;
 

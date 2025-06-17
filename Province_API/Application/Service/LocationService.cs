@@ -1,8 +1,9 @@
 ﻿using Province_API.Application.DTOs;
-using Province_API.Application.Interfaces;
+using Province_API.Application.Interfaces.Repositories;
+using Province_API.Application.Interfaces.Services;
 using Province_API.Domain.Entities;
 
-namespace Province_API.Application.Usecase
+namespace Province_API.Application.Services
 {
     public class LocationService : ILocationService
     {

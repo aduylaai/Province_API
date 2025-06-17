@@ -1,6 +1,6 @@
 ﻿using Province_API.Application.DTOs;
 
-namespace Province_API.Application.Interfaces
+namespace Province_API.Application.Interfaces.Services
 {
     public interface ILocationService
     {

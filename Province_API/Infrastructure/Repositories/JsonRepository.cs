@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.Json;
-using Province_API.Application.Interfaces;
 using Province_API.Application.DTOs;
 using Province_API.Domain.Entities;
 using Province_API.Infrastructure.Models;
 using Province_API.Infrastructure.Utils;
+using Province_API.Application.Interfaces.Repositories;
 
 
 namespace Province_API.Location.Infrastructure.Repositories

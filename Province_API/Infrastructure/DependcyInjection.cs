@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Province_API.Application.Interfaces;
+using Province_API.Application.Interfaces.Repositories;
 
 namespace Province_API.Infrastructure
 {
