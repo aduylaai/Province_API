@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\services\\locationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\services\\locationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\controller\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\controller\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\domain\\entities\\adminstrativeunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\domain\\entities\\adminstrativeunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\infrastructure\\repositories\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\infrastructure\\repositories\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\interfaces\\repositories\\ilocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\interfaces\\repositories\\ilocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\interfaces\\services\\ilocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\interfaces\\services\\ilocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,28 +35,16 @@
       "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\dependcyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\interfaces\\ilocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\interfaces\\ilocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\service\\locationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\service\\locationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\interfaces\\ilocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\interfaces\\ilocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\controller\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\controller\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\infrastructure\\repositories\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\infrastructure\\repositories\\jsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\application\\dtos\\administrativeunit_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\application\\dtos\\administrativeunit_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}|Solution Items{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}|D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}|Solution Items{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\infrastructure\\models\\locationlevels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,16 +55,8 @@
       "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\infrastructure\\data\\dvhcvn.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\AdministrativeUnit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AdministrativeUnit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|d:\\workspace\\mobiphone_intern\\github\\province_api\\province_api\\domain\\entities\\adminstrativeunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C892434C-2E20-40D5-936A-592E3D0F96D7}|Province_API\\Province_API.csproj|solutionrelative:province_api\\domain\\entities\\adminstrativeunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,12 +70,25 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
+              "Title": ".gitignore",
+              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-17T06:49:41.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "DependcyInjection.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\DependcyInjection.cs",
               "RelativeDocumentMoniker": "Province_API\\Application\\DependcyInjection.cs",
-              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\DependcyInjection.cs*",
-              "RelativeToolTip": "Province_API\\Application\\DependcyInjection.cs*",
+              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\DependcyInjection.cs",
+              "RelativeToolTip": "Province_API\\Application\\DependcyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T06:47:01.979Z",
@@ -79,13 +96,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ILocationService.cs",
-              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\ILocationService.cs",
-              "RelativeDocumentMoniker": "Province_API\\Application\\Interfaces\\ILocationService.cs",
-              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\ILocationService.cs",
-              "RelativeToolTip": "Province_API\\Application\\Interfaces\\ILocationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\Services\\ILocationService.cs",
+              "RelativeDocumentMoniker": "Province_API\\Application\\Interfaces\\Services\\ILocationService.cs",
+              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\Services\\ILocationService.cs",
+              "RelativeToolTip": "Province_API\\Application\\Interfaces\\Services\\ILocationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T06:46:51.963Z",
               "EditorCaption": ""
@@ -94,37 +111,37 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "ILocationRepository.cs",
-              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\ILocationRepository.cs",
-              "RelativeDocumentMoniker": "Province_API\\Application\\Interfaces\\ILocationRepository.cs",
-              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\ILocationRepository.cs",
-              "RelativeToolTip": "Province_API\\Application\\Interfaces\\ILocationRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\Repositories\\ILocationRepository.cs",
+              "RelativeDocumentMoniker": "Province_API\\Application\\Interfaces\\Repositories\\ILocationRepository.cs",
+              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Interfaces\\Repositories\\ILocationRepository.cs",
+              "RelativeToolTip": "Province_API\\Application\\Interfaces\\Repositories\\ILocationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T06:46:22.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "LocationService.cs",
-              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Service\\LocationService.cs",
-              "RelativeDocumentMoniker": "Province_API\\Application\\Service\\LocationService.cs",
-              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Service\\LocationService.cs",
-              "RelativeToolTip": "Province_API\\Application\\Service\\LocationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Services\\LocationService.cs",
+              "RelativeDocumentMoniker": "Province_API\\Application\\Services\\LocationService.cs",
+              "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\Services\\LocationService.cs",
+              "RelativeToolTip": "Province_API\\Application\\Services\\LocationService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T06:37:09.264Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Program.cs",
               "RelativeDocumentMoniker": "Province_API\\Program.cs",
               "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Program.cs",
               "RelativeToolTip": "Province_API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T01:16:04.01Z",
               "EditorCaption": ""
@@ -144,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AdministrativeUnit_DTO.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Application\\DTOs\\AdministrativeUnit_DTO.cs",
               "RelativeDocumentMoniker": "Province_API\\Application\\DTOs\\AdministrativeUnit_DTO.cs",
@@ -157,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "AdminstrativeUnit.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Domain\\Entities\\AdminstrativeUnit.cs",
               "RelativeDocumentMoniker": "Province_API\\Domain\\Entities\\AdminstrativeUnit.cs",
@@ -170,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "AdministrativeUnit.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\AdministrativeUnit.cs",
               "RelativeDocumentMoniker": "AdministrativeUnit.cs",
@@ -183,20 +200,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "JsonRepository.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Infrastructure\\Repositories\\JsonRepository.cs",
               "RelativeDocumentMoniker": "Province_API\\Infrastructure\\Repositories\\JsonRepository.cs",
               "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Infrastructure\\Repositories\\JsonRepository.cs",
               "RelativeToolTip": "Province_API\\Infrastructure\\Repositories\\JsonRepository.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAIA2wCgAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAWwCgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-16T09:57:39.672Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "dvhcvn.json",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Infrastructure\\Data\\dvhcvn.json",
               "RelativeDocumentMoniker": "Province_API\\Infrastructure\\Data\\dvhcvn.json",
@@ -209,20 +226,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "LocationController.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Controller\\LocationController.cs",
               "RelativeDocumentMoniker": "Province_API\\Controller\\LocationController.cs",
               "ToolTip": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Controller\\LocationController.cs",
               "RelativeToolTip": "Province_API\\Controller\\LocationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABrAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T01:12:49.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "LocationLevels.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Mobiphone_Intern\\Github\\Province_API\\Province_API\\Infrastructure\\Models\\LocationLevels.cs",
               "RelativeDocumentMoniker": "Province_API\\Infrastructure\\Models\\LocationLevels.cs",

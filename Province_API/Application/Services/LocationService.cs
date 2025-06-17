@@ -8,15 +8,19 @@ namespace Province_API.Application.Services
     public class LocationService : ILocationService
     {
         private readonly ILocationRepository _locationRepository;
-
+        private List<AdministrativeUnit_DTO> all;
         public LocationService(ILocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
+            all = _locationRepository.GetAll();
+            if (all == null || all.Count == 0)
+            {
+                throw new Exception("Cannot access database, please re-check!");
+            }
         }
 
         public List<AdministrativeUnit_DTO> GetAdministrativeUnit(string? parentID)
         {
-            var all = _locationRepository.GetAll();
             if (parentID == null)
             {
                 return all
