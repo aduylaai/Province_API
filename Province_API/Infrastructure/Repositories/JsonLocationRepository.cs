@@ -9,13 +9,13 @@ using Province_API.Application.Interfaces.Repositories;
 
 namespace Province_API.Location.Infrastructure.Repositories
 {
-    public class JsonRepository : ILocationRepository
+    public class JsonLocationRepository : ILocationRepository
     {
         private readonly List<AdminstrativeUnit> _administrativeUnits;
-       
+        private List<AdministrativeUnitDTO>? administrativeUnitDTOs;
 
         // Constructor to initialize the administrative units from a JSON file
-        public JsonRepository()
+        public JsonLocationRepository()
         {
             var jsonFilePath = File.ReadAllText("Infrastructure/Data/dvhcvn.json");
             var root = JsonSerializer.Deserialize<LocationLevels.LocationRoot>(jsonFilePath);
@@ -32,13 +32,18 @@ namespace Province_API.Location.Infrastructure.Repositories
 
         public List<AdministrativeUnitDTO> GetAll()
         {
-            return _administrativeUnits.Select(unit => new AdministrativeUnitDTO
+            
+            if (administrativeUnitDTOs == null)
             {
-                Id = unit.Id,
-                Name = unit.Name,
-                ParentId = unit.ParentId,
-                Type = unit.Type
-            }).ToList();
+                administrativeUnitDTOs = _administrativeUnits.Select(unit => new AdministrativeUnitDTO
+                {
+                    Id = unit.Id,
+                    Name = unit.Name,
+                    ParentId = unit.ParentId,
+                    Type = unit.Type
+                }).ToList();
+            }
+            return administrativeUnitDTOs;
         }
     }
 }

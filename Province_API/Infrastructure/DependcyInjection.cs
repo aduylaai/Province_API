@@ -7,7 +7,7 @@ namespace Province_API.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services) { 
         
-            services.AddSingleton<ILocationRepository, Location.Infrastructure.Repositories.JsonRepository>();
+            services.AddSingleton<ILocationRepository, Location.Infrastructure.Repositories.JsonLocationRepository>();
             // Database add here if needed
             return services;
         }

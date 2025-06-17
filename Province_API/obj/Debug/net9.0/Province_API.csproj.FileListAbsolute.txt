@@ -37,7 +37,6 @@ D:\WorkSpace\Mobiphone_Intern\Province_API\Province_API\bin\Debug\net9.0\Swashbu
 D:\WorkSpace\Mobiphone_Intern\Province_API\Province_API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\appsettings.Development.json
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\appsettings.json
-D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\Infrastructure\Data\dvhcvn.json
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\Province_API.staticwebassets.endpoints.json
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\Province_API.exe
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\Province_API.deps.json
@@ -73,3 +72,4 @@ D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\obj\Debug\net9.0\
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\obj\Debug\net9.0\Province_API.pdb
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\obj\Debug\net9.0\Province_API.genruntimeconfig.cache
 D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\obj\Debug\net9.0\ref\Province_API.dll
+D:\WorkSpace\Mobiphone_Intern\Github\Province_API\Province_API\bin\Debug\net9.0\Infrastructure\Data\dvhcvn1.json

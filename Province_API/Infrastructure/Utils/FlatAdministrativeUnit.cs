@@ -1,34 +1,36 @@
-﻿using Province_API.Domain.Entities;
+﻿using Province_API.Application.DTOs;
+using Province_API.Domain.Entities;
 using Province_API.Infrastructure.Models;
 
 namespace Province_API.Infrastructure.Utils
 {
     public class FlatAdministrativeUnit
     {
-        public static List<AdminstrativeUnit> FlattenAdministrativeUnit(List<LocationLevels.Level1> levels)
+        private static void FlattenNode(LocationLevels.LocationNode node, string? parentID, List<AdminstrativeUnit> list)
+        {
+            list.Add(new AdminstrativeUnit
+            {
+                Id = node.Id,
+                Name = node.Name,
+                ParentId = parentID,
+                Type = node.Type,
+                Children = new List<AdminstrativeUnit>()
+            });
+            if (node.Children != null)
+            {
+                foreach (var child in node.Children)
+                {
+                    FlattenNode(child, node.Id, list);
+                }
+            }
+        }
+
+        public static List<AdminstrativeUnit> FlattenAdministrativeUnit(List<LocationLevels.LocationNode> levels)
         {
             var result = new List<AdminstrativeUnit>();
-            foreach (var l1 in levels)
+            foreach (var level in levels)
             {
-                result.Add(new AdminstrativeUnit
-                (
-                   l1.Level1Id, l1.Name, l1.Type, null
-               ));
-
-                foreach (var l2 in l1.Level2s)
-                {
-                    result.Add(new AdminstrativeUnit
-                    (
-                        l2.Level2Id, l2.Name, l2.Type, l1.Level1Id
-                    ));
-                    foreach (var l3 in l2.Level3s)
-                    {
-                        result.Add(new AdminstrativeUnit
-                        (
-                            l3.Level3Id, l3.Name, l3.Type, l2.Level2Id
-                        ));
-                    }
-                }
+                FlattenNode(level, null, result);
             }
             return result;
         }

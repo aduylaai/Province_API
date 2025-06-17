@@ -20,5 +20,9 @@
             Type = type;
             ParentId = parentId;
         }
+        public AdminstrativeUnit()
+        {
+            
+        }
     }
 }
