@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Province_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb184e75a70fc52ef67b9b0aa9f3a6d4b0e4deb4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33dc0f8e3cf62f264bff7a98055c1d888ecc37cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Province_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Province_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
