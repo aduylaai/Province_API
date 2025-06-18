@@ -1,38 +1,29 @@
-﻿using System;
-using System.Text.Json;
+﻿using Microsoft.EntityFrameworkCore;
 using Province_API.Application.DTOs;
+using Province_API.Application.Interfaces;
+using Province_API.Application.Interfaces.Repositories;
 using Province_API.Domain.Entities;
 using Province_API.Infrastructure.Models;
 using Province_API.Infrastructure.Utils;
-using Province_API.Application.Interfaces.Repositories;
-
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Province_API.Infrastructure.Repositories
 {
-    public class JsonLocationRepository : ILocationRepository
+    public class LocationRepository : ILocationRepository
     {
+        private readonly IAppDBContext _appDBContext;
         private readonly List<AdminstrativeUnit> _administrativeUnits;
         private List<AdministrativeUnitDTO>? administrativeUnitDTOs;
 
-        // Constructor to initialize the administrative units from a JSON file
-        public JsonLocationRepository()
+        public LocationRepository(IAppDBContext appDBContext)
         {
-            var jsonFilePath = File.ReadAllText("Infrastructure/Data/dvhcvn.json");
-            var root = JsonSerializer.Deserialize<LocationLevels.LocationRoot>(jsonFilePath);
-
-            if (root?.Data != null)
-            {
-                _administrativeUnits = FlatAdministrativeUnit.FlattenAdministrativeUnit(root.Data);
-            }
-            else
-            {
-                _administrativeUnits = new List<AdminstrativeUnit>();
-            }
+            _appDBContext = appDBContext;
+            _administrativeUnits = _appDBContext.administrativeunits.ToListAsync().Result;
         }
 
         public List<AdministrativeUnitDTO> GetAll()
         {
-            
             if (administrativeUnitDTOs == null)
             {
                 administrativeUnitDTOs = _administrativeUnits.Select(unit => new AdministrativeUnitDTO

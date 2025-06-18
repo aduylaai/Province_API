@@ -1,17 +1,16 @@
 ﻿using Microsoft.OpenApi.Models;
 using Province_API.Application;
-using Province_API.Application.Interfaces;
-using Province_API.Application.Services;
 using Province_API.Infrastructure;
-using Province_API.Location.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+string connectionString = builder.Configuration.GetConnectionString("DbConnection")
 
 builder.Services.AddControllers();
 
 
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(connectionString);
+
 
 
 builder.Services.AddEndpointsApiExplorer();
