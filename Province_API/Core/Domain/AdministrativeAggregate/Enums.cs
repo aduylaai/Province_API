@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Province_API.Core.Domain
+namespace Province_API.Core.Domain.AdministrativeAggregate
 {
     public class Enums
     {

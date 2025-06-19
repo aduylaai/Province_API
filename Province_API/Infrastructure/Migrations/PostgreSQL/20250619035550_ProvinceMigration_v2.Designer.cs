@@ -8,11 +8,11 @@ using Province_API.Infrastructure.Data;
 
 #nullable disable
 
-namespace Province_API.Migrations
+namespace Province_API.Infrastructure.Migrations.PostgreSQL
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250618100835_ProvinceMigration_v1")]
-    partial class ProvinceMigration_v1
+    [Migration("20250619035550_ProvinceMigration_v2")]
+    partial class ProvinceMigration_v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Province_API.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Province_API.Core.Domain.Entities.AdminstrativeUnit", b =>
+            modelBuilder.Entity("Province_API.Core.Domain.AdministrativeAggregate.AdminstrativeUnit", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text")
@@ -54,14 +54,14 @@ namespace Province_API.Migrations
                     b.ToTable("administrative_unit");
                 });
 
-            modelBuilder.Entity("Province_API.Core.Domain.Entities.AdminstrativeUnit", b =>
+            modelBuilder.Entity("Province_API.Core.Domain.AdministrativeAggregate.AdminstrativeUnit", b =>
                 {
-                    b.HasOne("Province_API.Core.Domain.Entities.AdminstrativeUnit", null)
+                    b.HasOne("Province_API.Core.Domain.AdministrativeAggregate.AdminstrativeUnit", null)
                         .WithMany("Children")
                         .HasForeignKey("AdminstrativeUnitId");
                 });
 
-            modelBuilder.Entity("Province_API.Core.Domain.Entities.AdminstrativeUnit", b =>
+            modelBuilder.Entity("Province_API.Core.Domain.AdministrativeAggregate.AdminstrativeUnit", b =>
                 {
                     b.Navigation("Children");
                 });

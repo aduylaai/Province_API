@@ -11,7 +11,7 @@ namespace Province_API.Core.Services
         public LocationService(ILocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
-            _allUnit = _locationRepository.GetAll();
+            _allUnit = _locationRepository.GetAllAsync().Result; // Fix: Await the Task or use .Result to get the List
         }
 
         public List<AdministrativeUnit> GetAdministrativeUnits(string? parentID)

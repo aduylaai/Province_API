@@ -1,9 +1,8 @@
-﻿using Province_API.Core.Domain;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static Province_API.Core.Domain.Enums;
+using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
-namespace Province_API.Core.Domain.Entities
+namespace Province_API.Core.Domain.AdministrativeAggregate
 {
     [Table("administrative_unit")]
     public class AdminstrativeUnit

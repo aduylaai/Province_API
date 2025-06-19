@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Province_API.Core.Application.Interfaces;
-using Province_API.Core.Domain.Entities;
+using Province_API.Core.Domain.AdministrativeAggregate;
 
 namespace Province_API.Infrastructure.Data
 {

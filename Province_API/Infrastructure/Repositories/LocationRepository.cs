@@ -2,7 +2,7 @@
 using Province_API.Core.Application.DTOs;
 using Province_API.Core.Application.Interfaces;
 using Province_API.Core.Application.Interfaces.Repositories;
-using Province_API.Core.Domain.Entities;
+using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Models;
 using Province_API.Infrastructure.Utils;
 using System.Text.Json;
@@ -16,25 +16,25 @@ namespace Province_API.Infrastructure.Repositories
         private readonly List<AdminstrativeUnit> _administrativeUnits;
         private List<AdministrativeUnit>? administrativeUnitDTOs;
 
+
         public LocationRepository(IAppDBContext appDBContext)
         {
             _appDBContext = appDBContext;
-            _administrativeUnits = _appDBContext.AdministrativeUnits.ToList();
         }
 
-        public List<AdministrativeUnit> GetAll()
+        public async Task<List<AdministrativeUnit>> GetAllAsync()
         {
-            if (administrativeUnitDTOs == null)
-            {
-                administrativeUnitDTOs = _administrativeUnits.Select(unit => new AdministrativeUnit
+            var administrativeUnits = await _appDBContext.AdministrativeUnits
+                .Select(unit => new AdministrativeUnit
                 {
                     Id = unit.Id,
                     Name = unit.Name,
                     ParentId = unit.ParentId,
                     Type = unit.Type.ToString()
-                }).ToList();
-            }
-            return administrativeUnitDTOs;
+                })
+                .ToListAsync();
+
+            return administrativeUnits;
         }
     }
 }

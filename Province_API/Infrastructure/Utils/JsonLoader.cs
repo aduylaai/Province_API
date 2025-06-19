@@ -1,9 +1,9 @@
 ﻿using Province_API.Core.Application.Interfaces.Repositories;
-using Province_API.Core.Domain.Entities;
+using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Models;
 using System;
 using System.Text.Json;
-using static Province_API.Core.Domain.Enums;
+using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 
 namespace Province_API.Infrastructure.Utils

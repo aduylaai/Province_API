@@ -1,7 +1,7 @@
 ﻿using Province_API.Core.Application.DTOs;
-using Province_API.Core.Domain.Entities;
+using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Models;
-using static Province_API.Core.Domain.Enums;
+using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 namespace Province_API.Infrastructure.Utils
 {
