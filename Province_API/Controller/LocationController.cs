@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Province_API.Application.Interfaces.Services;
+using Province_API.Core.Application.Interfaces.Services;
 
 namespace Province_API.Controller
 {

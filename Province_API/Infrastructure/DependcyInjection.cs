@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Province_API.Application.Interfaces;
-using Province_API.Application.Interfaces.Repositories;
+using Province_API.Core.Application.Interfaces;
+using Province_API.Core.Application.Interfaces.Repositories;
 using Province_API.Infrastructure.Data;
 using Province_API.Infrastructure.Repositories;
+using Province_API.Infrastructure.Utils;
 
 namespace Province_API.Infrastructure
 {
@@ -16,7 +17,10 @@ namespace Province_API.Infrastructure
             services.AddScoped<IAppDBContext>(provider => provider.GetRequiredService<AppDbContext>());
 
             // Fix JsonLocationRepository (Static Json file) or LocationRepository (DB)
-            services.AddSingleton<ILocationRepository, JsonLocationRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+
+            services.AddScoped(provider => new JsonLoader());
+            services.AddScoped<JsonSeeder>();
             return services;
         }
 

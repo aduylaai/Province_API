@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Province_API.Core.Domain;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static Province_API.Core.Domain.Enums;
 
-namespace Province_API.Domain.Entities
+namespace Province_API.Core.Domain.Entities
 {
     [Table("administrative_unit")]
     public class AdminstrativeUnit
@@ -13,15 +15,15 @@ namespace Province_API.Domain.Entities
         [Column("name")]
         public string Name { get; set; }
 
-        [Column("parentid")]
+        [Column("parentId")]
         public string? ParentId { get; set; }
         [Column("type")]
-        public string Type { get; set; }
+        public AdministrativeUnitType Type { get; set; }
 
         public List<AdminstrativeUnit> Children { get; set; } = new List<AdminstrativeUnit>();
 
 
-        public AdminstrativeUnit(string id, string name, string type, string? parentId = null)
+        public AdminstrativeUnit(string id, string name, AdministrativeUnitType type, string? parentId = null)
         {
             Id = id;
             Name = name;

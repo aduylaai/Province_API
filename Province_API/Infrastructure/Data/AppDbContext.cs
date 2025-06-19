@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Province_API.Application.Interfaces;
-using Province_API.Domain.Entities;
+using Province_API.Core.Application.Interfaces;
+using Province_API.Core.Domain.Entities;
 
 namespace Province_API.Infrastructure.Data
 {
@@ -10,8 +10,18 @@ namespace Province_API.Infrastructure.Data
         {
         }
 
-        public DbSet<AdminstrativeUnit> administrativeunits { get; set;}
+        public DbSet<AdminstrativeUnit> AdministrativeUnits { get; set;}
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<AdminstrativeUnit>(entity =>
+            {
+                entity.Property(e => e.Type)
+                      .HasConversion<string>(); 
+            });
+        }
+
     }
 }

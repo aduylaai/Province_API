@@ -1,9 +1,12 @@
-﻿using Microsoft.OpenApi.Models;
-using Province_API.Application;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Province_API.Core.Application;
 using Province_API.Infrastructure;
+using Province_API.Infrastructure.Data;
+using Province_API.Infrastructure.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
-string connectionString = builder.Configuration.GetConnectionString("DbConnection")
+string connectionString = builder.Configuration.GetConnectionString("DbConnection");
 
 builder.Services.AddControllers();
 
@@ -27,6 +30,17 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+
+    var seeder = scope.ServiceProvider.GetRequiredService<JsonSeeder>();
+    seeder.Seed();
+}
+
 
 if (app.Environment.IsDevelopment())
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Province_API.Application.Interfaces.Services;
-using Province_API.Application.Services;
+using Province_API.Core.Application.Interfaces.Services;
+using Province_API.Core.Services;
 
-namespace Province_API.Application
+namespace Province_API.Core.Application
 {
     public static class DependcyInjection
     {

@@ -1,21 +1,20 @@
-﻿using Province_API.Application.DTOs;
-using Province_API.Application.Interfaces.Repositories;
-using Province_API.Application.Interfaces.Services;
-using Province_API.Domain.Entities;
+﻿using Province_API.Core.Application.DTOs;
+using Province_API.Core.Application.Interfaces.Repositories;
+using Province_API.Core.Application.Interfaces.Services;
 
-namespace Province_API.Application.Services
+namespace Province_API.Core.Services
 {
     public class LocationService : ILocationService
     {
         private readonly ILocationRepository _locationRepository;
-        private readonly List<AdministrativeUnitDTO> _allUnit;
+        private readonly List<AdministrativeUnit> _allUnit;
         public LocationService(ILocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
             _allUnit = _locationRepository.GetAll();
         }
 
-        public List<AdministrativeUnitDTO> GetAdministrativeUnits(string? parentID)
+        public List<AdministrativeUnit> GetAdministrativeUnits(string? parentID)
         {
             if (parentID == null)
             {
@@ -30,10 +29,10 @@ namespace Province_API.Application.Services
             }
         }
 
-        public AdministrativeUnitDTO GetAdministrativeUnitName(string id) => _allUnit
+        public AdministrativeUnit GetAdministrativeUnitName(string id) => _allUnit
             .FirstOrDefault(x => x.Id == id) ?? throw new KeyNotFoundException($"Administrative unit with ID {id} not found.");
 
-        public List<AdministrativeUnitDTO> GetProvinces() => _allUnit
+        public List<AdministrativeUnit> GetProvinces() => _allUnit
             .Where(x => x.ParentId == null)
             .ToList();
 

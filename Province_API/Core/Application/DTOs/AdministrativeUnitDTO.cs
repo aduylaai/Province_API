@@ -1,6 +1,6 @@
-﻿namespace Province_API.Application.DTOs
+﻿namespace Province_API.Core.Application.DTOs
 {
-    public class AdministrativeUnitDTO
+    public class AdministrativeUnit
     {
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
