@@ -10,5 +10,10 @@ namespace Province_API.Core.Application.Interfaces.Services
 
         List<AdminstrativeUnit> GetProvinces();
 
+        Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit);
+
+        Task<AdminstrativeUnit> UpdateLocation(AdminstrativeUnit unit);
+
+        Task<AdminstrativeUnit> DeleteLocation(string? id);
     }
 }

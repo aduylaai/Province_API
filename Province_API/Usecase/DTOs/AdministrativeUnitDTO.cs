@@ -8,7 +8,7 @@
 
         public string? ParentId { get; set; } = null;
 
-        public AdministrativeUnitDTO(string id, string Name, string Type, string ParentID)
+        public AdministrativeUnitDTO(string id, string Name, string Type, string? ParentID)
         {
             this.Id = id;
             this.Name = Name;

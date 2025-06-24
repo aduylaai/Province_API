@@ -6,10 +6,12 @@ namespace Province_API.Core.Application.Interfaces.Repositories
     {
         Task<List<AdminstrativeUnit>> GetAllAsync();
         
-        Task addAsync(AdminstrativeUnit entity);
+        Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity);
 
-        Task removeAsync(AdminstrativeUnit entity);
+        Task RemoveAsync(AdminstrativeUnit entity);
 
-        Task updateAsync(AdminstrativeUnit entity);
+        Task<AdminstrativeUnit> UpdateAsync(AdminstrativeUnit entity);
+
+        Task<List<String>> GetID(AdminstrativeUnit entity); 
     }
 }

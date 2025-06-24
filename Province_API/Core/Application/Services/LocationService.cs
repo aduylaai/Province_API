@@ -8,15 +8,13 @@ namespace Province_API.Core.Application.Services
     public class LocationService : ILocationService
     {
         private readonly ILocationRepository _locationRepository;
-        private readonly List<AdminstrativeUnit> _allUnit;
         public LocationService(ILocationRepository locationRepository)
         {
             _locationRepository = locationRepository;
-            _allUnit = _locationRepository.GetAllAsync().Result; 
         }
-
         public List<AdminstrativeUnit> GetAdministrativeUnits(string? parentID)
         {
+            var _allUnit = _locationRepository.GetAllAsync().Result;
             if (parentID == null)
             {
                 return _allUnit
@@ -29,25 +27,33 @@ namespace Province_API.Core.Application.Services
                     .Where(x => x.ParentId == parentID).ToList();
             }
         }
-
-        public AdminstrativeUnit GetAdministrativeUnit(string id) => _allUnit
+        public AdminstrativeUnit GetAdministrativeUnit(string id) => _locationRepository.GetAllAsync().Result
             .FirstOrDefault(x => x.Id == id) ?? throw new KeyNotFoundException($"Administrative unit with ID {id} not found.");
-
-        public List<AdminstrativeUnit> GetProvinces() => _allUnit
+        public List<AdminstrativeUnit> GetProvinces() => _locationRepository.GetAllAsync().Result
             .Where(x => x.ParentId == null)
             .ToList();
 
+        public async Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit) {
+            var ids = await _locationRepository.GetID(unit);
+            string id = ids.FirstOrDefault() ?? string.Empty;
 
+            unit.Id = id;
 
-        // ---
+            var newUnit = await _locationRepository.AddAsync(unit);
 
-        // Method to change the administrative units to DTOs
-        //private AdministrativeUnit_DTO ToDto(AdminstrativeUnit u) => new()
-        //{
-        //    Id = u.Id,
-        //    Name = u.Name,
-        //    Type = u.Type
-        //};
-        // --
+            return newUnit;
+        }
+
+        public Task<AdminstrativeUnit> UpdateLocation(AdminstrativeUnit unit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<AdminstrativeUnit> DeleteLocation(string? id)
+        {
+            var unit = GetAdministrativeUnit(id);
+            await _locationRepository.RemoveAsync(unit);
+            return unit;
+        }
     }
 }

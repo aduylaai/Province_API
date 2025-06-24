@@ -12,14 +12,14 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
             [EnumMember(Value = "Tỉnh")]
             Tinh,
 
+            [EnumMember(Value = "Thành phố")]
+            ThanhPho,
+
             [EnumMember(Value = "Quận")]
             Quan,
 
             [EnumMember(Value = "Huyện")]
             Huyen,
-
-            [EnumMember(Value = "Thành phố")]
-            ThanhPho,
 
             [EnumMember(Value = "Phường")]
             Phuong,

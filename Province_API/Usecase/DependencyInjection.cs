@@ -9,7 +9,9 @@ namespace Province_API.Usecase
         public static IServiceCollection AddUseCase(this IServiceCollection service)
         {
 
-            service.AddScoped<AdministrativeUnitUseCase>();
+            service.AddScoped<AdministrativeUnitGet>();
+            service.AddScoped<AdministrativeUnitCreate>();
+            service.AddScoped<AdministrativeUnitDelete>();
             return service;
         }
     }
