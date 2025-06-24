@@ -36,7 +36,7 @@ namespace Province_API.Controller
             }
         }
 
-        [HttpPost]
+        [HttpPost("unit/add")]
         public async Task<IActionResult> AddNewLocation([FromBody] AddNewLocationRequest req) {
             try
             {
@@ -49,7 +49,7 @@ namespace Province_API.Controller
             }
         }
 
-        [HttpPost]
+        [HttpPost("unit/delete")]
         public async Task<IActionResult> DeleteLocation([FromBody] string id) {
             try
             {

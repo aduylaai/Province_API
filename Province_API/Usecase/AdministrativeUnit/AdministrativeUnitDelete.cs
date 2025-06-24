@@ -4,11 +4,11 @@ using Province_API.Usecase.DTOs;
 
 namespace Province_API.Usecase.AdministrativeUnit
 {
-    public class AdministrativeDelete
+    public class AdministrativeUnitDelete
     {
         private ILocationService _locationService;
 
-        public AdministrativeDelete(ILocationService locationService)
+        public AdministrativeUnitDelete(ILocationService locationService)
         {
             _locationService = locationService;
         }
