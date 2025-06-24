@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Province_API.Core.Application.Interfaces.Services;
-using Province_API.Core.Services;
+using Province_API.Core.Application.Services;
 
 namespace Province_API.Core.Application
 {

@@ -1,0 +1,16 @@
+﻿using Province_API.Core.Application.Interfaces.Services;
+using Province_API.Core.Application.Services;
+using Province_API.Usecase.AdministrativeUnit;
+
+namespace Province_API.Usecase
+{
+    public static class DependcyInjection
+    {
+        public static IServiceCollection AddUseCase(this IServiceCollection service)
+        {
+
+            service.AddScoped<AdministrativeUnitUseCase>();
+            return service;
+        }
+    }
+}

@@ -1,5 +1,4 @@
-﻿using Province_API.Core.Application.DTOs;
-using Province_API.Core.Domain.AdministrativeAggregate;
+﻿using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Models;
 using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 

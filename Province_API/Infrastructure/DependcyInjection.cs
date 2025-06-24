@@ -14,7 +14,7 @@ namespace Province_API.Infrastructure
 
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
-            services.AddScoped<IAppDBContext>(provider => provider.GetRequiredService<AppDbContext>());
+            //services.AddScoped<IAppDBContext>(provider => provider.GetRequiredService<AppDbContext>());
 
             // Fix JsonLocationRepository (Static Json file) or LocationRepository (DB)
             services.AddScoped<ILocationRepository, LocationRepository>();

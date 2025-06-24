@@ -1,14 +1,14 @@
-﻿using Province_API.Core.Application.DTOs;
+﻿using Province_API.Core.Domain.AdministrativeAggregate;
 
 namespace Province_API.Core.Application.Interfaces.Services
 {
     public interface ILocationService
     {
-        List<AdministrativeUnit> GetAdministrativeUnits(string? parentID);
+        List<AdminstrativeUnit> GetAdministrativeUnits(string? parentID);
         // Additional methods can be defined here as needed
-        AdministrativeUnit GetAdministrativeUnitName(string id);
+        AdminstrativeUnit GetAdministrativeUnit(string id);
 
-        List<AdministrativeUnit> GetProvinces();
+        List<AdminstrativeUnit> GetProvinces();
 
     }
 }

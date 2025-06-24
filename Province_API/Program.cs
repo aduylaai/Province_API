@@ -4,6 +4,7 @@ using Province_API.Core.Application;
 using Province_API.Infrastructure;
 using Province_API.Infrastructure.Data;
 using Province_API.Infrastructure.Utils;
+using Province_API.Usecase;
 
 var builder = WebApplication.CreateBuilder(args);
 string connectionString = builder.Configuration.GetConnectionString("DbConnection");
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 
 
 builder.Services.AddApplication();
+builder.Services.AddUseCase();
 builder.Services.AddInfrastructure(connectionString);
 
 
