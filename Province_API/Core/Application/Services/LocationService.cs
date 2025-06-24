@@ -52,6 +52,13 @@ namespace Province_API.Core.Application.Services
         public async Task<AdminstrativeUnit> DeleteLocation(string? id)
         {
             var unit = GetAdministrativeUnit(id);
+
+            var children = GetAdministrativeUnits(id);
+            foreach (var child in children)
+            {
+                await DeleteLocation(child.Id);
+            }
+
             await _locationRepository.RemoveAsync(unit);
             return unit;
         }

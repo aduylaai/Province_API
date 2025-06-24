@@ -18,23 +18,33 @@ namespace Province_API.Controller
         }
 
         [HttpGet("unit")]
-        public IActionResult getProvinces() => Ok(_adminUnitGet.GetAllUnit());
+        public async Task<IActionResult> getProvinces()
+        {
+            var result = await _adminUnitGet.GetAllUnit();
+            return Ok(result);
+        }
 
         [HttpGet("unit/{parentID}")]
-        public IActionResult getProvinces(string parentID) => Ok(_adminUnitGet.GetChildrenByID(parentID));
+        public async Task<IActionResult> getProvinces(string parentID)
+        {
+            var result = await _adminUnitGet.GetChildrenByID(parentID);
+            return Ok(result);
+        }
 
         [HttpGet("unit/id/{id}")]
-        public IActionResult getAdministrativeUnitName(string id)
+        public async Task<IActionResult> getAdministrativeUnitName(string id)
         {
             try
             {
-                return Ok(_adminUnitGet.GetById(id));
+                var result = await _adminUnitGet.GetById(id);
+                return Ok(result);
             }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }
         }
+
 
         [HttpPost("unit/add")]
         public async Task<IActionResult> AddNewLocation([FromBody] AddNewLocationRequest req) {
