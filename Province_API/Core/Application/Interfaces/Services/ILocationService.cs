@@ -12,7 +12,7 @@ namespace Province_API.Core.Application.Interfaces.Services
 
         Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit);
 
-        Task<AdminstrativeUnit> UpdateLocation(AdminstrativeUnit unit);
+        Task<AdminstrativeUnit> UpdateLocation(string id, string changeName, string changeType, string? changeParentID);
 
         Task<AdminstrativeUnit> DeleteLocation(string? id);
     }

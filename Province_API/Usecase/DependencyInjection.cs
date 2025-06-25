@@ -12,6 +12,8 @@ namespace Province_API.Usecase
             service.AddScoped<AdministrativeUnitGet>();
             service.AddScoped<AdministrativeUnitCreate>();
             service.AddScoped<AdministrativeUnitDelete>();
+            service.AddScoped<AdministrativeUnitUpdate>();
+            service.AddScoped<IAdministrativeUnitService, AdministrativeUnitService>();
             return service;
         }
     }

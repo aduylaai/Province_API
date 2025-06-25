@@ -13,24 +13,9 @@ namespace Province_API.Infrastructure.Repositories
         {
             _appDBContext = appDBContext;
         }
-
-        //public async Task AddAsync(AdminstrativeUnit entity, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        await _appDBContext.AdministrativeUnits.AddAsync(entity, cancellationToken);
-        //        await _appDBContext.SaveChangesAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
-
         public async Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity)
         {
             await _appDBContext.AddAsync(entity);
-            await _appDBContext.SaveChangesAsync();
             return entity;
         }
 
@@ -57,17 +42,23 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task RemoveAsync(AdminstrativeUnit entity)
         {
-            _appDBContext.Remove(entity);
-            await _appDBContext.SaveChangesAsync();
+             _appDBContext.Remove(entity);
         }
 
-        public async Task<AdminstrativeUnit> UpdateAsync(AdminstrativeUnit entity)
+        public async Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
-            _appDBContext.Update(entity);
-            await _appDBContext.SaveChangesAsync();
-            return entity;
+            var location = await _appDBContext.AdministrativeUnits.FindAsync(id);
+
+            if (location == null)
+                throw new Exception($"Cannot find administrative unit with ID: {id}");
+
+            location.Name = changeName;
+            location.Type = Enum.Parse<Enums.AdministrativeUnitType>(changeType);
+            location.ParentId = changeParentID;
+
+            _appDBContext.AdministrativeUnits.Update(location);
+
+            return location;
         }
-
-
     }
 }

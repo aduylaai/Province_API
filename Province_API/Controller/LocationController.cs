@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Province_API.Core.Application.Interfaces.Services;
 using Province_API.Usecase.AdministrativeUnit;
 
 namespace Province_API.Controller
@@ -7,27 +8,23 @@ namespace Province_API.Controller
     [Route("api/[controller]")]
     public class LocationController : ControllerBase
     {
-        private readonly AdministrativeUnitGet _adminUnitGet;
-        private readonly AdministrativeUnitCreate _adminUnitCreate;
-        private readonly AdministrativeUnitDelete _adminUnitDelete;
-        public LocationController(AdministrativeUnitGet get,AdministrativeUnitCreate create, AdministrativeUnitDelete delete)
+        private readonly IAdministrativeUnitService _services;
+        public LocationController(IAdministrativeUnitService services)
         {
-            _adminUnitGet = get;
-            _adminUnitCreate = create;  
-            _adminUnitDelete = delete;
+            _services = services;
         }
 
         [HttpGet("unit")]
         public async Task<IActionResult> getProvinces()
         {
-            var result = await _adminUnitGet.GetAllUnit();
+            var result = await _services.GetAllUnitAsync();
             return Ok(result);
         }
 
         [HttpGet("unit/{parentID}")]
         public async Task<IActionResult> getProvinces(string parentID)
         {
-            var result = await _adminUnitGet.GetChildrenByID(parentID);
+            var result = await _services.GetChildrenByIDAsync(parentID);
             return Ok(result);
         }
 
@@ -36,7 +33,7 @@ namespace Province_API.Controller
         {
             try
             {
-                var result = await _adminUnitGet.GetById(id);
+                var result = await _services.GetByIdAsync(id);
                 return Ok(result);
             }
             catch (KeyNotFoundException ex)
@@ -50,7 +47,7 @@ namespace Province_API.Controller
         public async Task<IActionResult> AddNewLocation([FromBody] AddNewLocationRequest req) {
             try
             {
-                var result = await _adminUnitCreate.AddNewLocation(req.Name, req.Type, req.ParentId);
+                var result = await _services.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -63,8 +60,8 @@ namespace Province_API.Controller
         public async Task<IActionResult> DeleteLocation([FromBody] string id) {
             try
             {
-                var result = await _adminUnitDelete.DeleteLocation(id);
-                return Ok(result);
+                var result = await _services.DeleteLocationAsync(id);
+                return Ok($"Deleted {result.Name}!");
             }
             catch (Exception ex)
             {

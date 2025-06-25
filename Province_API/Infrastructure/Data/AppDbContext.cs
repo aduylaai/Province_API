@@ -28,31 +28,14 @@ namespace Province_API.Infrastructure.Data
         private List<int> GetLatestID()
         {
             List<int> result = new List<int>();
-
-            using (var command = this.Database.GetDbConnection().CreateCommand())
-            {
-                command.CommandText = @"
-            SELECT
-                MAX(CAST(id AS BIGINT)) FILTER (WHERE length(id) = 2) AS max_level1,
-                MAX(CAST(id AS BIGINT)) FILTER (WHERE length(id) = 3) AS max_level2,
-                MAX(CAST(id AS BIGINT)) FILTER (WHERE length(id) = 5) AS max_level3
-            FROM ""administrative_unit"";";
-
-                this.Database.OpenConnection();
-
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var level1 = reader.IsDBNull(0) ? "0" : reader.GetInt64(0).ToString();
-                        var level2 = reader.IsDBNull(1) ? "0" : reader.GetInt64(1).ToString();
-                        var level3 = reader.IsDBNull(2) ? "0" : reader.GetInt64(2).ToString();
-
-                        result.Add(int.Parse(level1));
-                        result.Add(int.Parse(level2));
-                        result.Add(int.Parse(level3));
-                    }
-                }
+            int[] expectedLengths = { 2, 3, 5 };
+            foreach (int lenght in expectedLengths) {
+                var levelMax = AdministrativeUnits
+                  .Where(x => x.Id.Length == lenght)
+                  .Select(x => Convert.ToInt64(x.Id))
+                  .DefaultIfEmpty(0)
+                  .Max();
+                result.Add((int)levelMax);
             }
             return result;
         }

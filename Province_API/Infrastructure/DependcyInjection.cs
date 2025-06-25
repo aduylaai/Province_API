@@ -18,6 +18,7 @@ namespace Province_API.Infrastructure
 
             // Fix JsonLocationRepository (Static Json file) or LocationRepository (DB)
             services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped(provider => new JsonLoader());
             services.AddScoped<JsonSeeder>();

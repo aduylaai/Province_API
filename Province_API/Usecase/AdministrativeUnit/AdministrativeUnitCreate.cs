@@ -28,7 +28,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             };
 
             var newUnit = await _locationService.AddNewLocation(unit);
-
+            
             return new AdministrativeUnitDTO(newUnit.Id, newUnit.Name, newUnit.Type.ToString(), newUnit.ParentId);
         }
     }
