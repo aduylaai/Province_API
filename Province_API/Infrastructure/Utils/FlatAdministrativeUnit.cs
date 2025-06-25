@@ -9,13 +9,11 @@ namespace Province_API.Infrastructure.Utils
         private static void FlattenNode(LocationLevels.LocationNode node, string? parentID, List<AdminstrativeUnit> list)
         {
             list.Add(new AdminstrativeUnit
-            {
-                Id = node.Id,
-                Name = node.Name,
-                ParentId = parentID,
-                Type = ConvertType(node.Type),
-                Children = new List<AdminstrativeUnit>()
-            });
+            (
+                node.Id,
+                node.Name,
+                ConvertType(node.Type)
+                ));
             if (node.Children != null)
             {
                 foreach (var child in node.Children)
@@ -37,19 +35,8 @@ namespace Province_API.Infrastructure.Utils
 
         public static AdministrativeUnitType ConvertType(string typeStr)
         {
-            return typeStr switch
-            {
-                "Thành phố Trung ương" => AdministrativeUnitType.ThanhPhoTrungUong,
-                "Tỉnh" => AdministrativeUnitType.Tinh,
-                "Quận" => AdministrativeUnitType.Quan,
-                "Huyện" => AdministrativeUnitType.Huyen,
-                "Thành phố" => AdministrativeUnitType.ThanhPho,
-                "Phường" => AdministrativeUnitType.Phuong,
-                "Xã" => AdministrativeUnitType.Xa,
-                "Thị trấn" => AdministrativeUnitType.ThiTran,
-                "Thị xã" => AdministrativeUnitType.ThiXa,
-                _ => throw new ArgumentException($"Unknown type {typeStr}")
-            };
+            Enum.TryParse<AdministrativeUnitType>(typeStr, out var result);
+            return result;
         }
     }
 }

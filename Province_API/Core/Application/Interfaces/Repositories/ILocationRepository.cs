@@ -12,6 +12,6 @@ namespace Province_API.Core.Application.Interfaces.Repositories
 
         Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
 
-        Task<List<String>> GetID(AdminstrativeUnit entity); 
+        Task<List<String>> GetID(string entityType); 
     }
 }

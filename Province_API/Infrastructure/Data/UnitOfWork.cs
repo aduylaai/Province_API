@@ -31,9 +31,10 @@ namespace Province_API.Infrastructure.Data
             _appDbContext.Dispose();
         }
 
-        public void SaveChanges()
+
+        public async Task<int> SaveChangesAsync()
         {
-            _appDbContext.SaveChanges();
+            return await _appDbContext.SaveChangesAsync();
         }
     }
 }

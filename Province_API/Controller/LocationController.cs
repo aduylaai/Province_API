@@ -44,7 +44,7 @@ namespace Province_API.Controller
 
 
         [HttpPost("unit/add")]
-        public async Task<IActionResult> AddNewLocation([FromBody] AddNewLocationRequest req) {
+        public async Task<IActionResult> AddNewLocation([FromBody] LocationRequest req) {
             try
             {
                 var result = await _services.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
@@ -56,7 +56,7 @@ namespace Province_API.Controller
             }
         }
 
-        [HttpPost("unit/delete")]
+        [HttpDelete("unit/delete")]
         public async Task<IActionResult> DeleteLocation([FromBody] string id) {
             try
             {
@@ -68,9 +68,23 @@ namespace Province_API.Controller
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateLocation(string id, [FromBody] LocationRequest locationRequest)
+        {
+            try
+            {
+                var result = await _services.UpdateLocationAsync(id, locationRequest.Name, locationRequest.Type, locationRequest.ParentId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 
-    public class AddNewLocationRequest
+    public class LocationRequest
     {
         public string Name { get; set; }
         public string Type { get; set; }

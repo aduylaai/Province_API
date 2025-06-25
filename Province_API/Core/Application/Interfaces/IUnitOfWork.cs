@@ -5,6 +5,6 @@ namespace Province_API.Core.Application.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         ILocationRepository LocationRepository { get; }
-        void SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

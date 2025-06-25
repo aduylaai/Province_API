@@ -14,5 +14,7 @@ namespace Province_API.Core.Application.Interfaces.Services
 
         Task<AdministrativeUnitDTO> GetByIdAsync(string id);
 
+        Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
+
     }
 }

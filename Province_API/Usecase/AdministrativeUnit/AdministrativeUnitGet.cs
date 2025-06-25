@@ -1,4 +1,5 @@
 ﻿using Province_API.Core.Application.Interfaces.Services;
+using Province_API.Infrastructure.Utils;
 using Province_API.Usecase.DTOs;
 
 namespace Province_API.Usecase.AdministrativeUnit
@@ -17,7 +18,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             var unit = await Task.Run(() => _locationService.GetAdministrativeUnit(id));
             if (unit != null)
             {
-                return new AdministrativeUnitDTO(unit.Id, unit.Name, unit.Type.ToString(), unit.ParentId);
+                return new AdministrativeUnitDTO(unit.Id, unit.Name, EnumHelpers.GetEnumMemberValue(unit.Type), unit.ParentId);
             }
             else
             {
@@ -32,7 +33,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             List<AdministrativeUnitDTO> _children = new List<AdministrativeUnitDTO>();
             foreach (var child in children)
             {
-                _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, child.Type.ToString(), child.ParentId));
+                _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, EnumHelpers.GetEnumMemberValue(child.Type), child.ParentId));
             }
             return _children;
         }
@@ -44,7 +45,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             List<AdministrativeUnitDTO> _children = new List<AdministrativeUnitDTO>();
             foreach (var child in children)
             {
-                _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, child.Type.ToString(), child.ParentId));
+                _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, EnumHelpers.GetEnumMemberValue(child.Type), child.ParentId));
             }
             return _children;
         }

@@ -1,4 +1,5 @@
 ﻿using Province_API.Core.Domain.AdministrativeAggregate;
+using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 namespace Province_API.Core.Application.Interfaces.Services
 {
@@ -12,7 +13,7 @@ namespace Province_API.Core.Application.Interfaces.Services
 
         Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit);
 
-        Task<AdminstrativeUnit> UpdateLocation(string id, string changeName, string changeType, string? changeParentID);
+        Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
 
         Task<AdminstrativeUnit> DeleteLocation(string? id);
     }

@@ -9,17 +9,17 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
     {
         [Key]
         [Column("id")]
-        public string Id { get; set; }
+        public string Id { get;  set; }
 
         [Column("name")]
         public string Name { get; set; }
 
         [Column("parentId")]
-        public string? ParentId { get; set; }
+        public string? ParentId { get;  set; }
         [Column("type")]
-        public AdministrativeUnitType Type { get; set; }
+        public AdministrativeUnitType Type { get;  set; }
 
-        public List<AdminstrativeUnit> Children { get; set; } = new List<AdminstrativeUnit>();
+        public List<AdminstrativeUnit> Children { get;  set; } = new List<AdminstrativeUnit>();
 
 
         public AdminstrativeUnit(string id, string name, AdministrativeUnitType type, string? parentId = null)
@@ -29,9 +29,6 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
             Type = type;
             ParentId = parentId;
         }
-        public AdminstrativeUnit()
-        {
-            
-        }
+
     }
 }

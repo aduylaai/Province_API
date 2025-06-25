@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Province_API.Core.Application.Interfaces;
 using Province_API.Core.Domain.AdministrativeAggregate;
+using Province_API.Infrastructure.Utils;
+using System.Text.RegularExpressions;
 using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 namespace Province_API.Infrastructure.Data
@@ -20,44 +22,54 @@ namespace Province_API.Infrastructure.Data
             modelBuilder.Entity<AdminstrativeUnit>(entity =>
             {
                 entity.Property(e => e.Type)
-                      .HasConversion<string>();
+                       .HasConversion(
+                            v => v.GetEnumMemberValue(),
+                            v => EnumHelpers.ParseEnumMemberValue<AdministrativeUnitType>(v)
+                            );
                 entity.ToTable("administrative_unit");
             });
         }
 
-        private List<int> GetLatestID()
+        private Dictionary<string, int> GetLatestIDsByPrefix()
         {
-            List<int> result = new List<int>();
-            int[] expectedLengths = { 2, 3, 5 };
-            foreach (int lenght in expectedLengths) {
-                var levelMax = AdministrativeUnits
-                  .Where(x => x.Id.Length == lenght)
-                  .Select(x => Convert.ToInt64(x.Id))
-                  .DefaultIfEmpty(0)
-                  .Max();
-                result.Add((int)levelMax);
+            var result = new Dictionary<string, int>();
+
+            var ids = AdministrativeUnits
+                .Select(x => x.Id)
+                .ToList();
+
+            foreach (var id in ids)
+            {
+                var match = Regex.Match(id, @"^([a-zA-Z]+)(\d+)$"); // Tách prefix và số
+
+                if (match.Success)
+                {
+                    var prefix = match.Groups[1].Value;
+                    var number = int.Parse(match.Groups[2].Value);
+
+                    if (!result.ContainsKey(prefix) || result[prefix] < number)
+                    {
+                        result[prefix] = number;
+                    }
+                }
             }
+
             return result;
         }
 
         public string GetId(AdministrativeUnitType type)
         {
-            string id = "0";
+            var latestIds = GetLatestIDsByPrefix();
+            string prefix = type switch
+            {
+                AdministrativeUnitType.ThanhPho or AdministrativeUnitType.ThanhPhoTrungUong or AdministrativeUnitType.Tinh => "tinh",
+                AdministrativeUnitType.Quan or AdministrativeUnitType.Huyen or AdministrativeUnitType.ThiXa => "huyen",
+                AdministrativeUnitType.Xa or AdministrativeUnitType.Phuong or AdministrativeUnitType.ThiTran => "xa",
+                _ => throw new ArgumentException("Unknown type")
+            };
 
-            List<int> latestId = GetLatestID();
-            if (type == AdministrativeUnitType.ThanhPho || type == AdministrativeUnitType.ThanhPhoTrungUong || type == AdministrativeUnitType.Tinh)
-            {
-                id = (latestId[0] + 1).ToString();
-            }
-            else if (type == AdministrativeUnitType.Quan || type == AdministrativeUnitType.Huyen || type == AdministrativeUnitType.ThiXa)
-            {
-                id = (latestId[1] + 1).ToString();
-            }
-            else if (type == AdministrativeUnitType.Xa || type == AdministrativeUnitType.Phuong || type == AdministrativeUnitType.ThiTran)
-            {
-                id = (latestId[2] + 1).ToString();
-            }
-            return id;
+            int nextNumber = latestIds.ContainsKey(prefix) ? latestIds[prefix] + 1 : 1;
+            return $"{prefix}{nextNumber}";
         }
     }
 }
