@@ -68,7 +68,16 @@ namespace Province_API.Core.Application.Services
 
         public async Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
-            var changedLocation = await _unitOfWork.LocationRepository.UpdateLocationAsync(id, changeName, changeType, changeParentID);
+            var location = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
+            location.Name = changeName;
+
+            //TODO: Check the type => GetID => Gain new id...
+
+            location.Type = Enum.Parse<Enums.AdministrativeUnitType>(changeType);
+            location.ParentId = changeParentID;
+
+
+            var changedLocation = await _unitOfWork.LocationRepository.UpdateLocationAsync(location);
             _unitOfWork.SaveChangesAsync();
             return changedLocation;
         }

@@ -20,12 +20,11 @@ namespace Province_API.Usecase.AdministrativeUnit
         {
             var type = FlatAdministrativeUnit.ConvertType(pType);
 
-            AdminstrativeUnit unit = new AdminstrativeUnit(
-                "",
-                pName,
-                type,
-                pParentID
-            );
+            var unit = new AdministrativeUnitBuilder()
+                            .SetParentID(pParentID)
+                            .SetName(pName)
+                            .SetType(type)
+                            .Build();
 
             var newUnit = await _locationService.AddNewLocation(unit);
             

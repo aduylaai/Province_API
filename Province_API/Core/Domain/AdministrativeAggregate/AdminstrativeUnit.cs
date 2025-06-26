@@ -29,6 +29,12 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
             Type = type;
             ParentId = parentId;
         }
+        public AdminstrativeUnit( string name, AdministrativeUnitType type, string? parentId = null)
+        {
+            Name = name;
+            Type = type;
+            ParentId = parentId;
+        }
 
     }
 }

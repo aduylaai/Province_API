@@ -32,7 +32,7 @@ namespace Province_API.Infrastructure.Repositories
         {
             var children = await _appDBContext.AdministrativeUnits
                 .Where(x => x.ParentId == id)
-                .ToListAsync(); 
+                .ToListAsync();
             return children;
         }
 
@@ -40,9 +40,9 @@ namespace Province_API.Infrastructure.Repositories
         {
             var provinces = await _appDBContext.AdministrativeUnits
                 .Where(u => u.ParentId == null)
-                .ToListAsync(); 
+                .ToListAsync();
 
-            return provinces; 
+            return provinces;
         }
 
         public async Task<AdminstrativeUnit> GetByIdAsync(string id)
@@ -60,24 +60,12 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task RemoveAsync(AdminstrativeUnit entity)
         {
-             _appDBContext.Remove(entity);
+            _appDBContext.Remove(entity);
         }
 
-        public async Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
+
+        public async Task<AdminstrativeUnit> UpdateLocationAsync(AdminstrativeUnit location)
         {
-            // Quang len services
-            var location = await _appDBContext.AdministrativeUnits.FindAsync(id);
-
-            if (location == null)
-                throw new Exception($"Cannot find administrative unit with ID: {id}");
-
-            location.Name = changeName;
-
-            //TODO: Check the type => GetID => Gain new id...
-            
-            location.Type = Enum.Parse<Enums.AdministrativeUnitType>(changeType);
-            location.ParentId = changeParentID;
-
             _appDBContext.AdministrativeUnits.Update(location);
 
             return location;

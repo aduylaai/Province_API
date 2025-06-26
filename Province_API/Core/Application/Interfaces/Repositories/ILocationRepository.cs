@@ -13,7 +13,7 @@ namespace Province_API.Core.Application.Interfaces.Repositories
 
         Task RemoveAsync(AdminstrativeUnit entity);
 
-        Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
+        Task<AdminstrativeUnit> UpdateLocationAsync(AdminstrativeUnit location);
 
         Task<List<String>> GetID(string entityType);
 
