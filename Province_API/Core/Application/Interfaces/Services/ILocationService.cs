@@ -5,11 +5,11 @@ namespace Province_API.Core.Application.Interfaces.Services
 {
     public interface ILocationService
     {
-        List<AdminstrativeUnit> GetAdministrativeUnits(string? parentID);
+        List<AdminstrativeUnit> GetChildernAdministrativeUnits(string? parentID);
         // Additional methods can be defined here as needed
         AdminstrativeUnit GetAdministrativeUnit(string id);
 
-        List<AdminstrativeUnit> GetProvinces();
+        List<AdminstrativeUnit> GetAllProvinces();
 
         Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit);
 

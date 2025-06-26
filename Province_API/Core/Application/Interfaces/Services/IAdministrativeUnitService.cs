@@ -8,7 +8,7 @@ namespace Province_API.Core.Application.Interfaces.Services
 
         Task<AdministrativeUnitDTO> DeleteLocationAsync(string pId);
 
-        Task<List<AdministrativeUnitDTO>> GetAllUnitAsync();
+        Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync();
 
         Task<List<AdministrativeUnitDTO>> GetChildrenByIDAsync(string? id);
 

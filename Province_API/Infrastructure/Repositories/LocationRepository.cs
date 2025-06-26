@@ -28,6 +28,30 @@ namespace Province_API.Infrastructure.Repositories
             return administrativeUnits;
         }
 
+        public async Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id)
+        {
+            var children = await _appDBContext.AdministrativeUnits
+                .Where(x => x.ParentId == id)
+                .ToListAsync(); 
+            return children;
+        }
+
+        public async Task<List<AdminstrativeUnit>> GetAllProvinces()
+        {
+            var provinces = await _appDBContext.AdministrativeUnits
+                .Where(u => u.ParentId == null)
+                .ToListAsync(); 
+
+            return provinces; 
+        }
+
+        public async Task<AdminstrativeUnit> GetByIdAsync(string id)
+        {
+            var result = await _appDBContext.AdministrativeUnits.FirstOrDefaultAsync(u => u.Id == id);
+
+            return result == null ? null : result;
+        }
+
         public async Task<List<string>> GetID(string entityType)
         {
             var id = _appDBContext.GetId(FlatAdministrativeUnit.ConvertType(entityType));

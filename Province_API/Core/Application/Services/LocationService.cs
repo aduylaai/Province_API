@@ -14,35 +14,31 @@ namespace Province_API.Core.Application.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public List<AdminstrativeUnit> GetAdministrativeUnits(string? parentID)
+        public List<AdminstrativeUnit> GetChildernAdministrativeUnits(string? parentID)
         {
-            
-            var _allUnit = _unitOfWork.LocationRepository.GetAllAsync().Result;
+
             if (parentID == null)
             {
-                return _allUnit
-                   .Where(x => x.ParentId == null)
-                   .ToList();
+                return GetAllProvinces();
             }
             else
             {
-                return _allUnit
-                    .Where(x => x.ParentId == parentID).ToList();
+                var children = _unitOfWork.LocationRepository.GetAllChildrenByIdAsync(parentID).Result;
+                return children;
             }
         }
         public AdminstrativeUnit GetAdministrativeUnit(string id)
         {
-            return _unitOfWork.LocationRepository.GetAllAsync().Result
-           .FirstOrDefault(x => x.Id == id) ?? throw new KeyNotFoundException($"Administrative unit with ID {id} not found.");
+            var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
+            return unit ?? null;
         }
-        public List<AdminstrativeUnit> GetProvinces()
-        { 
-            return _unitOfWork.LocationRepository.GetAllAsync().Result
-            .Where(x => x.ParentId == null)
-            .ToList();
+        public List<AdminstrativeUnit> GetAllProvinces()
+        {
+            return _unitOfWork.LocationRepository.GetAllProvinces().Result;
         }
 
-        public async Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit) {
+        public async Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit)
+        {
             var ids = await _unitOfWork.LocationRepository.GetID(unit.Type.ToString());
             string id = ids.FirstOrDefault() ?? string.Empty;
 
@@ -59,7 +55,7 @@ namespace Province_API.Core.Application.Services
         {
             var unit = GetAdministrativeUnit(id);
 
-            var children = GetAdministrativeUnits(id);
+            var children = GetChildernAdministrativeUnits(id);
             foreach (var child in children)
             {
                 await DeleteLocation(child.Id);
@@ -77,6 +73,6 @@ namespace Province_API.Core.Application.Services
             return changedLocation;
         }
 
-        
+
     }
 }

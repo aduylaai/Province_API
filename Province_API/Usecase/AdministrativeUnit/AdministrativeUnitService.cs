@@ -24,8 +24,8 @@ namespace Province_API.Usecase.AdministrativeUnit
         public Task<AdministrativeUnitDTO> DeleteLocationAsync(string pId)
             => _delete.DeleteLocation(pId);
 
-        public Task<List<AdministrativeUnitDTO>> GetAllUnitAsync()
-            => _get.GetAllUnit();
+        public Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync()
+            => _get.GetAllProvinces();
 
         public Task<AdministrativeUnitDTO> GetByIdAsync(string id)
             => _get.GetById(id);
