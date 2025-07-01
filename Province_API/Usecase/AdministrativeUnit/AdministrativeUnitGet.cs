@@ -13,7 +13,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             _locationService = locationService;
         }
 
-        public async Task<AdministrativeUnitDTO> GetById(string id)
+        public async Task<AdministrativeUnitDTO> GetByIdAsync(string id)
         {
             var unit = await Task.Run(() => _locationService.GetAdministrativeUnit(id));
             if (unit != null)
@@ -26,7 +26,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             }
         }
 
-        public async Task<List<AdministrativeUnitDTO>> GetChildrenByID(string? id)
+        public async Task<List<AdministrativeUnitDTO>> GetChildrenByIDAsync(string? id)
         {
             var children = await Task.Run(() => _locationService.GetChildernAdministrativeUnits(id));
 
@@ -38,7 +38,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             return _children;
         }
 
-        public async Task<List<AdministrativeUnitDTO>> GetAllProvinces()
+        public async Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync()
         {
             var children = await Task.Run(() => _locationService.GetChildernAdministrativeUnits(null));
 

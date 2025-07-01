@@ -16,14 +16,14 @@ namespace Province_API.Usecase.AdministrativeUnit
             _locationService = locationService;
         }
 
-        public async Task<AdministrativeUnitDTO> AddNewLocation(string pName, string pType, string? pParentID)
+        public async Task<AdministrativeUnitDTO> AddNewLocationAsync(string pName, string pType, string? pParentID)
         {
             var type = FlatAdministrativeUnit.ConvertType(pType);
 
             var unit = new AdministrativeUnitBuilder()
-                            .SetParentID(pParentID)
-                            .SetName(pName)
-                            .SetType(type)
+                            .withName(pName)
+                            .withType(type)
+                            .withParentId(pParentID)
                             .Build();
 
             var newUnit = await _locationService.AddNewLocation(unit);

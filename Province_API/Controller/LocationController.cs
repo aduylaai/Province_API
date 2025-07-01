@@ -13,25 +13,25 @@ namespace Province_API.Controller
         }
 
         [HttpGet("unit")]
-        public async Task<IActionResult> GetProvincesAsync([FromServices] IAdministrativeUnitUsecase _adminUnitUC)
+        public async Task<IActionResult> GetProvincesAsync([FromServices] AdministrativeUnitGet _get)
         {
-            var result = await _adminUnitUC.GetAllProvincesAsync();
+            var result = await _get.GetAllProvincesAsync();
             return Ok(result);
         }
 
         [HttpGet("unit/{parentID}")]
-        public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] IAdministrativeUnitUsecase _adminUnitUC)
+        public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] AdministrativeUnitGet _get)
         {
-            var result = await _adminUnitUC.GetChildrenByIDAsync(parentID);
+            var result = await _get.GetChildrenByIDAsync(parentID);
             return Ok(result);
         }
 
         [HttpGet("unit/id/{id}")]
-        public async Task<IActionResult> GetAdministrativeUnitNameAsync(string id, [FromServices] IAdministrativeUnitUsecase _adminUnitUC)
+        public async Task<IActionResult> GetAdministrativeUnitNameAsync(string id, [FromServices] AdministrativeUnitGet _get)
         {
             try
             {
-                var result = await _adminUnitUC.GetByIdAsync(id);
+                var result = await _get.GetByIdAsync(id);
                 return Ok(result);
             }
             catch (KeyNotFoundException ex)
@@ -42,10 +42,10 @@ namespace Province_API.Controller
 
 
         [HttpPost("unit/add")]
-        public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] IAdministrativeUnitUsecase _adminUnitUC) {
+        public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] AdministrativeUnitCreate _create) {
             try
             {
-                var result = await _adminUnitUC.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
+                var result = await _create.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -55,10 +55,10 @@ namespace Province_API.Controller
         }
 
         [HttpDelete("unit/delete/{id}")]
-        public async Task<IActionResult> DeleteLocationAsync(string id, [FromServices] IAdministrativeUnitUsecase _adminUnitUC) {
+        public async Task<IActionResult> DeleteLocationAsync(string id, [FromServices] AdministrativeUnitDelete _delete) {
             try
             {
-                var result = await _adminUnitUC.DeleteLocationAsync(id);
+                var result = await _delete.DeleteLocationAsync(id);
                 return Ok($"Deleted {result.Name}!");
             }
             catch (Exception ex)
@@ -68,11 +68,11 @@ namespace Province_API.Controller
         }
 
         [HttpPut("unit/update/{id}")]
-        public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] IAdministrativeUnitUsecase _adminUnitUC)
+        public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] AdministrativeUnitUpdate _update)
         {
             try
             {
-                var result = await _adminUnitUC.UpdateLocationAsync(id, locationRequest.Name, locationRequest.Type, locationRequest.ParentId);
+                var result = await _update.UpdateLocationAsync(id, locationRequest.Name, locationRequest.Type, locationRequest.ParentId);
                 return Ok(result);
             }
             catch (Exception ex)

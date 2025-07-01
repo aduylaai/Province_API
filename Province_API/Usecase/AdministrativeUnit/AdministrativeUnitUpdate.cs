@@ -12,7 +12,7 @@ namespace Province_API.Usecase.AdministrativeUnit
             _locationService = locationService;
         }
 
-        public async Task<AdministrativeUnitDTO> UpdateLocation(string id, string changeName, string changeType, string? changeParentID)
+        public async Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
             var unit = await _locationService.UpdateLocationAsync(id, changeName,changeType,changeParentID);
 

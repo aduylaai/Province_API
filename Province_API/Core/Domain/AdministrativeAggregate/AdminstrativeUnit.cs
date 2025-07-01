@@ -19,6 +19,7 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
             bool isChange = false;
             if (id != null) { 
                 this.Id = id;
+                isChange = true;
             }
             return isChange;
         }
@@ -46,13 +47,45 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
 
             return isChange;
         }
-        internal AdminstrativeUnit(string name, AdministrativeUnitType type, string? parentId = null)
+
+        public bool UpdateName(string name)
         {
-            Name = name;
-            Type = type;
-            ParentId = parentId;
-            Children = new List<AdminstrativeUnit>();
+            bool isChange = false;
+            if (name != null)
+            {
+                this.Name = name;
+                isChange = true;
+            }
+            return isChange;
         }
+        public bool UpdateType(AdministrativeUnitType type)
+        {
+            bool isChange = false;
+            if (type != null)
+            {
+                this.Type = type;
+                isChange = true;
+            }
+            return isChange;
+        }
+        public bool UpdateParentId(string parentID)
+        {
+            bool isChange = false;
+            if (parentID != null)
+            {
+                this.ParentId = parentID;
+                isChange = true;
+            }
+            return isChange;
+        }
+
+        //internal AdminstrativeUnit(string name, AdministrativeUnitType type, string? parentId = null)
+        //{
+        //    Name = name;
+        //    Type = type;
+        //    ParentId = parentId;
+        //    Children = new List<AdminstrativeUnit>();
+        //}
         internal AdminstrativeUnit()
         {
 

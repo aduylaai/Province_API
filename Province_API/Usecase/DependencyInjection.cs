@@ -13,7 +13,6 @@ namespace Province_API.Usecase
             service.AddScoped<AdministrativeUnitCreate>();
             service.AddScoped<AdministrativeUnitDelete>();
             service.AddScoped<AdministrativeUnitUpdate>();
-            service.AddScoped<IAdministrativeUnitUsecase, AdministrativeUnitService>();
             return service;
         }
     }

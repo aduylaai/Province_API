@@ -10,12 +10,11 @@ namespace Province_API.Infrastructure.Utils
         {
             var unitBuilder = new AdministrativeUnitBuilder();
             unitBuilder
-                .SetParentID(parentID)
-                .SetName(node.Name)
-                .SetType(ConvertType(node.Type));
+                .withID(node.Id)
+                .withName(node.Name)
+                .withParentId(parentID)
+                .withType(ConvertType(node.Type));
             AdminstrativeUnit unit= unitBuilder.Build();
-
-            unit.UpdateID(node.Id);
 
             list.Add(unit);
             if (node.Children != null)
