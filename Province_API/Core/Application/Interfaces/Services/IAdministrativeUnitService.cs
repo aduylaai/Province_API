@@ -2,7 +2,7 @@
 
 namespace Province_API.Core.Application.Interfaces.Services
 {
-    public interface IAdministrativeUnitService
+    public interface IAdministrativeUnitUsecase
     {
         Task<AdministrativeUnitDTO> AddNewLocationAsync(string pName, string pType, string? pParentID);
 

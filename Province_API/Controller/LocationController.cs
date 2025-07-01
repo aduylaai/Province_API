@@ -8,26 +8,26 @@ namespace Province_API.Controller
     [Route("api/[controller]")]
     public class LocationController : ControllerBase
     {
-        public LocationController(IAdministrativeUnitService services)
+        public LocationController()
         {
         }
 
         [HttpGet("unit")]
-        public async Task<IActionResult> GetProvincesAsync([FromServices] IAdministrativeUnitService _adminUnitUC)
+        public async Task<IActionResult> GetProvincesAsync([FromServices] IAdministrativeUnitUsecase _adminUnitUC)
         {
             var result = await _adminUnitUC.GetAllProvincesAsync();
             return Ok(result);
         }
 
         [HttpGet("unit/{parentID}")]
-        public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] IAdministrativeUnitService _adminUnitUC)
+        public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] IAdministrativeUnitUsecase _adminUnitUC)
         {
             var result = await _adminUnitUC.GetChildrenByIDAsync(parentID);
             return Ok(result);
         }
 
         [HttpGet("unit/id/{id}")]
-        public async Task<IActionResult> GetAdministrativeUnitNameAsync(string id, [FromServices] IAdministrativeUnitService _adminUnitUC)
+        public async Task<IActionResult> GetAdministrativeUnitNameAsync(string id, [FromServices] IAdministrativeUnitUsecase _adminUnitUC)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Province_API.Controller
 
 
         [HttpPost("unit/add")]
-        public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] IAdministrativeUnitService _adminUnitUC) {
+        public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] IAdministrativeUnitUsecase _adminUnitUC) {
             try
             {
                 var result = await _adminUnitUC.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
@@ -55,7 +55,7 @@ namespace Province_API.Controller
         }
 
         [HttpDelete("unit/delete/{id}")]
-        public async Task<IActionResult> DeleteLocationAsync(string id, [FromServices] IAdministrativeUnitService _adminUnitUC) {
+        public async Task<IActionResult> DeleteLocationAsync(string id, [FromServices] IAdministrativeUnitUsecase _adminUnitUC) {
             try
             {
                 var result = await _adminUnitUC.DeleteLocationAsync(id);
@@ -68,7 +68,7 @@ namespace Province_API.Controller
         }
 
         [HttpPut("unit/update/{id}")]
-        public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] IAdministrativeUnitService _adminUnitUC)
+        public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] IAdministrativeUnitUsecase _adminUnitUC)
         {
             try
             {

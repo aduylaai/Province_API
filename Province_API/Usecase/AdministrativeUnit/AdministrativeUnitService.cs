@@ -3,7 +3,7 @@ using Province_API.Usecase.DTOs;
 
 namespace Province_API.Usecase.AdministrativeUnit
 {
-    public class AdministrativeUnitService : IAdministrativeUnitService
+    public class AdministrativeUnitService : IAdministrativeUnitUsecase
     {
         private readonly AdministrativeUnitCreate _create;
         private readonly AdministrativeUnitDelete _delete;
