@@ -21,12 +21,17 @@ namespace Province_API.Infrastructure.Data
 
             modelBuilder.Entity<AdminstrativeUnit>(entity =>
             {
+                entity.ToTable("administrative_unit");
                 entity.Property(e => e.Type)
                        .HasConversion(
                             v => v.GetEnumMemberValue(),
                             v => EnumHelpers.ParseEnumMemberValue<AdministrativeUnitType>(v)
                             );
-                entity.ToTable("administrative_unit");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Name).HasColumnName("name");
+                entity.Property(e => e.ParentId).HasColumnName("parentId");
+                entity.Property(e => e.Type).HasColumnName("type");
             });
         }
 

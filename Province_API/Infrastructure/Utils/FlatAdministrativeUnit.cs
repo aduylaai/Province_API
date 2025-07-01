@@ -8,12 +8,16 @@ namespace Province_API.Infrastructure.Utils
     {
         private static void FlattenNode(LocationLevels.LocationNode node, string? parentID, List<AdminstrativeUnit> list)
         {
-            list.Add(new AdminstrativeUnit
-            (
-                node.Id,
-                node.Name,
-                ConvertType(node.Type)
-                ));
+            var unitBuilder = new AdministrativeUnitBuilder();
+            unitBuilder
+                .SetParentID(parentID)
+                .SetName(node.Name)
+                .SetType(ConvertType(node.Type));
+            AdminstrativeUnit unit= unitBuilder.Build();
+
+            unit.UpdateID(node.Id);
+
+            list.Add(unit);
             if (node.Children != null)
             {
                 foreach (var child in node.Children)

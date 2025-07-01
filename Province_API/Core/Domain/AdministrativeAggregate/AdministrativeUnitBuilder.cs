@@ -30,7 +30,7 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
 
         public AdminstrativeUnit Build()
         {
-            return new AdminstrativeUnit(this.name, this.type, this.parentid);
+           return new AdminstrativeUnit(this.name, this.type, this.parentid);
         }
     }
 }
