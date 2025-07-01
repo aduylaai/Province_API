@@ -15,6 +15,7 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
 
         public List<AdminstrativeUnit> Children { get; protected set; } = new List<AdminstrativeUnit>();
 
+        public bool IsDelete { get; protected set; } = false;
         public bool UpdateID(string id) { 
             bool isChange = false;
             if (id != null) { 
@@ -77,6 +78,16 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
                 isChange = true;
             }
             return isChange;
+        }
+
+        public void MarkAsDelete() { 
+            IsDelete = true;
+        }
+
+        public void Restore() {
+            if (IsDelete) { 
+                IsDelete = false;
+            }
         }
 
         //internal AdminstrativeUnit(string name, AdministrativeUnitType type, string? parentId = null)

@@ -21,6 +21,7 @@ namespace Province_API.Infrastructure.Data
 
             modelBuilder.Entity<AdminstrativeUnit>(entity =>
             {
+                entity.HasQueryFilter(x=>!x.IsDelete);
                 entity.ToTable("administrative_unit");
                 entity.Property(e => e.Type)
                        .HasConversion(

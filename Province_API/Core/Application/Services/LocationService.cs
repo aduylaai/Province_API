@@ -78,6 +78,21 @@ namespace Province_API.Core.Application.Services
             return changedLocation;
         }
 
+        public async Task<AdminstrativeUnit> SoftDeleteById(string id)
+        {
+            var unit = GetAdministrativeUnit(id);
 
+            var children = GetChildernAdministrativeUnits(id);
+            foreach (var child in children)
+            {
+                await SoftDeleteById(child.Id);
+            }
+
+            unit.MarkAsDelete();
+            await _unitOfWork.LocationRepository.UpdateLocationAsync(unit);
+            _unitOfWork.SaveChangesAsync();
+            return unit;
+
+        }
     }
 }

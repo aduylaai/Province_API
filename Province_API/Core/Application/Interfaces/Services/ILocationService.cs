@@ -16,5 +16,7 @@ namespace Province_API.Core.Application.Interfaces.Services
         Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
 
         Task<AdminstrativeUnit> DeleteLocation(string? id);
+
+        Task<AdminstrativeUnit> SoftDeleteById(string id);
     }
 }

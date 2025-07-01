@@ -67,6 +67,20 @@ namespace Province_API.Controller
             }
         }
 
+        [HttpDelete("unit/softdelete/{id}")]
+        public async Task<IActionResult> SoftDeleteLocationAsync(string id, [FromServices] AdministrativeUnitDelete _delete)
+        {
+            try
+            {
+                var result = await _delete.SoftDeleteLocationAsync(id);
+                return Ok($"Deleted {result.Name}!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPut("unit/update/{id}")]
         public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] AdministrativeUnitUpdate _update)
         {

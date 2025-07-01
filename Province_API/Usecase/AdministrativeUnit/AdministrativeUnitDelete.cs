@@ -19,5 +19,11 @@ namespace Province_API.Usecase.AdministrativeUnit
             return new AdministrativeUnitDTO { Id = unit.Id ,Name = unit.Name, Type = unit.Type.ToString(), ParentId = unit.ParentId};
         }
 
+        public async Task<AdministrativeUnitDTO> SoftDeleteLocationAsync(string id)
+        {
+            var unit = await _locationService.SoftDeleteById(id);
+            return new AdministrativeUnitDTO { Id = unit.Id, Name = unit.Name, Type = unit.Type.ToString(), ParentId = unit.ParentId };
+        }
+
     }
 }
