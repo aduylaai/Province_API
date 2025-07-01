@@ -31,7 +31,7 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
         public AdminstrativeUnit Build()
         {
        
-            var finalName = string.IsNullOrWhiteSpace(name) ? "Không rõ" : name;
+            var finalName = string.IsNullOrWhiteSpace(name) ? "Unknown" : name;
             var finalType = type ?? AdministrativeUnitType.Xa;
           
             return new AdminstrativeUnit(finalName, finalType, this.parentid);
