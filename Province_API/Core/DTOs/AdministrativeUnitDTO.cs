@@ -1,4 +1,4 @@
-﻿namespace Province_API.Usecase.DTOs
+﻿namespace Province_API.Core.DTOs
 {
     public class AdministrativeUnitDTO
     {

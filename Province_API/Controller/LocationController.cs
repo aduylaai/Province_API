@@ -13,28 +13,28 @@ namespace Province_API.Controller
         }
 
         [HttpGet("unit")]
-        public async Task<IActionResult> GetProvincesAsync([FromServices] AdministrativeUnitGet _get)
+        public async Task<IActionResult> GetProvincesAsync([FromServices] ILocationService _get)
         {
-            var result = await _get.GetAllProvincesAsync();
+            var result = await _get.GetAllProvinces();
             return Ok(result);
         }
 
         [HttpGet("unit/{parentID}")]
-        public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] AdministrativeUnitGet _get)
+        public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] ILocationService _get)
         {
-            var result = await _get.GetChildrenByIDAsync(parentID);
+            var result = await _get.GetChildernAdministrativeUnits(parentID);
             return Ok(result);
         }
 
         [HttpGet("unit/id/{id}")]
-        public async Task<IActionResult> GetAdministrativeUnitNameAsync(string id, [FromServices] AdministrativeUnitGet _get)
+        public async Task<IActionResult> GetAdministrativeUnitNameAsync(string id, [FromServices] ILocationService _get)
         {
             try
             {
-                var result = await _get.GetByIdAsync(id);
-                if (result.Id== null)
+                var result = await _get.GetAdministrativeUnit(id);
+                if (result== null)
                 {
-                    return NotFound("Unit not exist!");
+                    return NotFound($"{id} not exist!");
                 }
                 return Ok(result);
             }
@@ -46,15 +46,15 @@ namespace Province_API.Controller
 
 
         [HttpPost("unit/add")]
-        public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] AdministrativeUnitCreate _create) {
+        public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] ILocationService _create) {
             try
             {
-                var result = await _create.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
-                return Ok(result);
+                var result = await _create.AddNewLocation(req.Name, req.Type, req.ParentId);
+                return Ok($"{result.Name} created!");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500,"Please try again later!");
             }
         }
 
@@ -67,26 +67,26 @@ namespace Province_API.Controller
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500,ex.Message);
             }
         }
 
         [HttpDelete("unit/softdelete/{id}")]
-        public async Task<IActionResult> SoftDeleteLocationAsync(string id, [FromServices] AdministrativeUnitDelete _delete)
+        public async Task<IActionResult> SoftDeleteLocationAsync(string id, [FromServices] ILocationService _delete)
         {
             try
             {
-                var result = await _delete.SoftDeleteLocationAsync(id);
+                var result = await _delete.SoftDeleteById(id);
                 return Ok($"Deleted {result.Name}!");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500,ex.Message);
             }
         }
 
         [HttpPut("unit/update/{id}")]
-        public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] AdministrativeUnitUpdate _update)
+        public async Task<IActionResult> UpdateLocationAsync(string id, [FromBody] LocationRequest locationRequest, [FromServices] ILocationService _update)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace Province_API.Controller
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, ex.Message);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Province_API.Core.Application.Interfaces.Services;
 using Province_API.Infrastructure.Utils;
-using Province_API.Usecase.DTOs;
+using Province_API.Core.DTOs;
 
 namespace Province_API.Usecase.AdministrativeUnit
 {
@@ -15,39 +15,42 @@ namespace Province_API.Usecase.AdministrativeUnit
 
         public async Task<AdministrativeUnitDTO> GetByIdAsync(string id)
         {
-            var unit = await Task.Run(() => _locationService.GetAdministrativeUnit(id));
-            if (unit != null)
-            {
-                return new AdministrativeUnitDTO(unit.Id, unit.Name, EnumHelpers.GetEnumMemberValue(unit.Type), unit.ParentId);
-            }
-            else
-            {
-                return new AdministrativeUnitDTO();
-            }
+            //var unit = await Task.Run(() => _locationService.GetAdministrativeUnit(id));
+            //if (unit != null)
+            //{
+            //    return new AdministrativeUnitDTO(unit.Id, unit.Name, EnumHelpers.GetEnumMemberValue(unit.Type), unit.ParentId);
+            //}
+            //else
+            //{
+            //    return new AdministrativeUnitDTO();
+            //}
+            throw new NotImplementedException();
         }
 
         public async Task<List<AdministrativeUnitDTO>> GetChildrenByIDAsync(string? id)
         {
-            var children = await Task.Run(() => _locationService.GetChildernAdministrativeUnits(id));
+            //var children = await Task.Run(() => _locationService.GetChildernAdministrativeUnits(id));
 
-            List<AdministrativeUnitDTO> _children = new List<AdministrativeUnitDTO>();
-            foreach (var child in children)
-            {
-                _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, EnumHelpers.GetEnumMemberValue(child.Type), child.ParentId));
-            }
-            return _children;
+            //List<AdministrativeUnitDTO> _children = new List<AdministrativeUnitDTO>();
+            //foreach (var child in children)
+            //{
+            //    _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, EnumHelpers.GetEnumMemberValue(child.Type), child.ParentId));
+            //}
+            //return _children;
+            throw new NotImplementedException();
         }
 
         public async Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync()
         {
-            var children = await Task.Run(() => _locationService.GetChildernAdministrativeUnits(null));
+            //var children = await Task.Run(() => _locationService.GetChildernAdministrativeUnits(null));
 
-            List<AdministrativeUnitDTO> _children = new List<AdministrativeUnitDTO>();
-            foreach (var child in children)
-            {
-                _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, EnumHelpers.GetEnumMemberValue(child.Type), child.ParentId));
-            }
-            return _children;
+            //List<AdministrativeUnitDTO> _children = new List<AdministrativeUnitDTO>();
+            //foreach (var child in children)
+            //{
+            //    _children.Add(new AdministrativeUnitDTO(child.Id, child.Name, EnumHelpers.GetEnumMemberValue(child.Type), child.ParentId));
+            //}
+            //return _children;
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,22 +1,22 @@
 ﻿using Province_API.Core.Domain.AdministrativeAggregate;
+using Province_API.Core.DTOs;
 using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 namespace Province_API.Core.Application.Interfaces.Services
 {
     public interface ILocationService
     {
-        List<AdminstrativeUnit> GetChildernAdministrativeUnits(string? parentID);
-        // Additional methods can be defined here as needed
-        AdminstrativeUnit GetAdministrativeUnit(string id);
+        Task<List<AdministrativeUnitDTO>> GetChildernAdministrativeUnits(string? parentID);
+        Task<AdministrativeUnitDTO> GetAdministrativeUnit(string id);
 
-        List<AdminstrativeUnit> GetAllProvinces();
+        Task<List<AdministrativeUnitDTO>> GetAllProvinces();
 
-        Task<AdminstrativeUnit> AddNewLocation(AdminstrativeUnit unit);
+        Task<AdministrativeUnitDTO> AddNewLocation(string pName, string pType, string? pParentID);
 
-        Task<AdminstrativeUnit> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
+        Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
 
         Task<AdminstrativeUnit> DeleteLocation(string? id);
 
-        Task<AdminstrativeUnit> SoftDeleteById(string id);
+        Task<AdministrativeUnitDTO> SoftDeleteById(string id);
     }
 }

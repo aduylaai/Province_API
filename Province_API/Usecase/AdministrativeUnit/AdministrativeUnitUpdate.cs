@@ -1,5 +1,5 @@
 ﻿using Province_API.Core.Application.Interfaces.Services;
-using Province_API.Usecase.DTOs;
+using Province_API.Core.DTOs;
 
 namespace Province_API.Usecase.AdministrativeUnit
 {
@@ -14,9 +14,10 @@ namespace Province_API.Usecase.AdministrativeUnit
 
         public async Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
-            var unit = await _locationService.UpdateLocationAsync(id, changeName,changeType,changeParentID);
+            //var unit = await _locationService.UpdateLocationAsync(id, changeName,changeType,changeParentID);
 
-            return new AdministrativeUnitDTO(unit.Id,unit.Name,unit.Type.ToString(), unit.ParentId);
+            //return new AdministrativeUnitDTO(unit.Id,unit.Name,unit.Type.ToString(), unit.ParentId);
+            throw new NotImplementedException();
         }
     }
 }
