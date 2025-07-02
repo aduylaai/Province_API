@@ -1,4 +1,5 @@
-﻿using Province_API.Core.Application.Interfaces;
+﻿using Mapster;
+using Province_API.Core.Application.Interfaces;
 using Province_API.Core.Application.Interfaces.Repositories;
 using Province_API.Core.Application.Interfaces.Services;
 using Province_API.Core.Domain.AdministrativeAggregate;
@@ -19,38 +20,33 @@ namespace Province_API.Core.Application.Services
         {
             if (parentID == null)
             {
-                return await Task.FromResult(GetAllProvincesAsync()).Result;
+                return await GetAllProvincesAsync();
             }
             else
             {
-                var children = _unitOfWork.LocationRepository.GetAllChildrenByIdAsync(parentID).Result;
-                List<AdministrativeUnitDTO> dtos = new List<AdministrativeUnitDTO>();
-                foreach (var child in children)
-                {
-                    dtos.Add(ConvertToDTO(child));
-                }
+                var children = await _unitOfWork.LocationRepository.GetAllChildrenByIdAsync(parentID);
+                var dtos = children.Adapt<List<AdministrativeUnitDTO>>();
                 return dtos;
             }
         }
         public async Task<AdministrativeUnitDTO> GetAdministrativeUnitAsync(string id)
         {
 
-            var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
+            var unit = await _unitOfWork.LocationRepository.GetByIdAsync(id);
 
-            if (unit.ParentId != null && _unitOfWork.LocationRepository.HasParentIsDeleted(id).Result || unit.IsDelete)
+            if (unit.ParentId != null && await _unitOfWork.LocationRepository.HasParentIsDeleted(id) || unit.IsDelete)
             {
                 return null;
             }
 
-            return ConvertToDTO(unit) ?? null;
+            var unitDto = unit.Adapt<AdministrativeUnitDTO>();
+
+            return unitDto ?? null;
         }
         public async Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync()
         {
-            var allProvince = _unitOfWork.LocationRepository.GetAllProvinces().Result;
-            List<AdministrativeUnitDTO> dtos = new List<AdministrativeUnitDTO>();
-            foreach (var province in allProvince) { 
-              dtos.Add(ConvertToDTO(province));
-            }
+            var allProvince = await _unitOfWork.LocationRepository.GetAllProvinces();
+            var dtos = allProvince.Adapt<List<AdministrativeUnitDTO>>();
             return dtos;
         }
         //--- CREATE FUNCTION
@@ -70,10 +66,10 @@ namespace Province_API.Core.Application.Services
             unit.UpdateID(id);
 
             var newUnit = await _unitOfWork.LocationRepository.AddAsync(unit);
-            _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync();
 
             
-            return ConvertToDTO(newUnit);
+            return newUnit.Adapt<AdministrativeUnitDTO>();
         }
 
 
@@ -95,31 +91,27 @@ namespace Province_API.Core.Application.Services
 
         public async Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
-            var location = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
-
+            var location = await _unitOfWork.LocationRepository.GetByIdAsync(id);
+            
             AdministrativeUnitType changedType = Enum.Parse<Enums.AdministrativeUnitType>(changeType);
             location.UpdateAdministrativeUnit(changeName, changedType, changeParentID);
 
             var changedLocation = await _unitOfWork.LocationRepository.UpdateLocationAsync(location);
-            _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync();
 
 
-            return ConvertToDTO(changedLocation);
+            return changedLocation.Adapt<AdministrativeUnitDTO>();
         }
 
         public async Task<AdministrativeUnitDTO> SoftDeleteByIdAsync(string id)
         {
-            var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
+            var unit = await _unitOfWork.LocationRepository.GetByIdAsync(id);
             
             unit.MarkAsDelete();
             await _unitOfWork.LocationRepository.UpdateLocationAsync(unit);
-            _unitOfWork.SaveChangesAsync();
-            return ConvertToDTO(unit);
+            await _unitOfWork.SaveChangesAsync();
+            return unit.Adapt<AdministrativeUnitDTO>();
 
-        }
-
-        private AdministrativeUnitDTO ConvertToDTO(AdminstrativeUnit unit) {
-            return new AdministrativeUnitDTO(unit.Id, unit.Name, unit.Type.ToString(), unit.ParentId);
         }
     }
 }

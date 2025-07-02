@@ -61,7 +61,6 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task<bool> HasParentIsDeleted(string id)
         {
-           
             var parent = await _appDBContext.AdministrativeUnits
                  .FromSqlRaw(@"SELECT * FROM getancestors({0})", id)
             .AsNoTracking()
