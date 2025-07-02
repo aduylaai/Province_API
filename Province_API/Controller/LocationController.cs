@@ -32,6 +32,10 @@ namespace Province_API.Controller
             try
             {
                 var result = await _get.GetByIdAsync(id);
+                if (result.Id== null)
+                {
+                    return NotFound("Unit not exist!");
+                }
                 return Ok(result);
             }
             catch (KeyNotFoundException ex)

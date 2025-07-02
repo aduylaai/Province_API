@@ -16,6 +16,9 @@ namespace Province_API.Migrations
                 type: "boolean",
                 nullable: false,
                 defaultValue: false);
+
+            
+
         }
 
         /// <inheritdoc />
@@ -24,6 +27,8 @@ namespace Province_API.Migrations
             migrationBuilder.DropColumn(
                 name: "IsDelete",
                 table: "administrative_unit");
+
+            migrationBuilder.Sql("DROP FUNCTION IF EXISTS GetAncestors(TEXT);");
         }
     }
 }

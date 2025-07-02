@@ -30,6 +30,7 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id)
         {
+
             var children = await _appDBContext.AdministrativeUnits
                 .Where(x => x.ParentId == id)
                 .ToListAsync();
@@ -56,6 +57,18 @@ namespace Province_API.Infrastructure.Repositories
         {
             var id = _appDBContext.GetId(FlatAdministrativeUnit.ConvertType(entityType));
             return await Task.FromResult(new List<string> { id });
+        }
+
+        public async Task<bool> HasParentIsDeleted(string id)
+        {
+           
+            var parent = await _appDBContext.AdministrativeUnits
+                 .FromSqlRaw(@"SELECT * FROM getancestors({0})", id)
+            .AsNoTracking()
+            .ToListAsync();
+
+            return parent.Any(x => x.IsDelete);
+
         }
 
         public async Task RemoveAsync(AdminstrativeUnit entity)

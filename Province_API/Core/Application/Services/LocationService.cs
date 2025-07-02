@@ -29,7 +29,14 @@ namespace Province_API.Core.Application.Services
         }
         public AdminstrativeUnit GetAdministrativeUnit(string id)
         {
+
             var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
+
+            if (unit.ParentId != null && _unitOfWork.LocationRepository.HasParentIsDeleted(id).Result)
+            {
+                return new AdminstrativeUnit();
+            }
+
             return unit ?? null;
         }
         public List<AdminstrativeUnit> GetAllProvinces()
@@ -80,13 +87,13 @@ namespace Province_API.Core.Application.Services
 
         public async Task<AdminstrativeUnit> SoftDeleteById(string id)
         {
-            var unit = GetAdministrativeUnit(id);
+            var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
 
-            var children = GetChildernAdministrativeUnits(id);
-            foreach (var child in children)
-            {
-                await SoftDeleteById(child.Id);
-            }
+            //var children = GetChildernAdministrativeUnits(id);
+            //foreach (var child in children)
+            //{
+            //    await SoftDeleteById(child.Id);
+            //}
 
             unit.MarkAsDelete();
             await _unitOfWork.LocationRepository.UpdateLocationAsync(unit);

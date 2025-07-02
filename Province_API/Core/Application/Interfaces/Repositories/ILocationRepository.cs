@@ -20,5 +20,7 @@ namespace Province_API.Core.Application.Interfaces.Repositories
         Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id);
 
         Task<List<AdminstrativeUnit>> GetAllProvinces();
+
+        Task<bool> HasParentIsDeleted(string id);
     }
 }
