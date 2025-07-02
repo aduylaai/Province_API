@@ -15,14 +15,14 @@ namespace Province_API.Controller
         [HttpGet("unit")]
         public async Task<IActionResult> GetProvincesAsync([FromServices] ILocationService _get)
         {
-            var result = await _get.GetAllProvinces();
+            var result = await _get.GetAllProvincesAsync();
             return Ok(result);
         }
 
         [HttpGet("unit/{parentID}")]
         public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] ILocationService _get)
         {
-            var result = await _get.GetChildernAdministrativeUnits(parentID);
+            var result = await _get.GetChildernAdministrativeUnitsAsync(parentID);
             return Ok(result);
         }
 
@@ -31,7 +31,7 @@ namespace Province_API.Controller
         {
             try
             {
-                var result = await _get.GetAdministrativeUnit(id);
+                var result = await _get.GetAdministrativeUnitAsync(id);
                 if (result== null)
                 {
                     return NotFound($"{id} not exist!");
@@ -49,7 +49,7 @@ namespace Province_API.Controller
         public async Task<IActionResult> AddNewLocationAsync([FromBody] LocationRequest req, [FromServices] ILocationService _create) {
             try
             {
-                var result = await _create.AddNewLocation(req.Name, req.Type, req.ParentId);
+                var result = await _create.AddNewLocationAsync(req.Name, req.Type, req.ParentId);
                 return Ok($"{result.Name} created!");
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace Province_API.Controller
         {
             try
             {
-                var result = await _delete.SoftDeleteById(id);
+                var result = await _delete.SoftDeleteByIdAsync(id);
                 return Ok($"Deleted {result.Name}!");
             }
             catch (Exception ex)

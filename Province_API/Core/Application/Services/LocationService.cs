@@ -15,11 +15,11 @@ namespace Province_API.Core.Application.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<List<AdministrativeUnitDTO>> GetChildernAdministrativeUnits(string? parentID)
+        public async Task<List<AdministrativeUnitDTO>> GetChildernAdministrativeUnitsAsync(string? parentID)
         {
             if (parentID == null)
             {
-                return await Task.FromResult(GetAllProvinces()).Result;
+                return await Task.FromResult(GetAllProvincesAsync()).Result;
             }
             else
             {
@@ -32,7 +32,7 @@ namespace Province_API.Core.Application.Services
                 return dtos;
             }
         }
-        public async Task<AdministrativeUnitDTO> GetAdministrativeUnit(string id)
+        public async Task<AdministrativeUnitDTO> GetAdministrativeUnitAsync(string id)
         {
 
             var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
@@ -44,7 +44,7 @@ namespace Province_API.Core.Application.Services
 
             return ConvertToDTO(unit) ?? null;
         }
-        public async Task<List<AdministrativeUnitDTO>> GetAllProvinces()
+        public async Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync()
         {
             var allProvince = _unitOfWork.LocationRepository.GetAllProvinces().Result;
             List<AdministrativeUnitDTO> dtos = new List<AdministrativeUnitDTO>();
@@ -54,7 +54,7 @@ namespace Province_API.Core.Application.Services
             return dtos;
         }
         //--- CREATE FUNCTION
-         public async Task<AdministrativeUnitDTO> AddNewLocation(string pName, string pType, string? pParentID)
+         public async Task<AdministrativeUnitDTO> AddNewLocationAsync(string pName, string pType, string? pParentID)
         {
             var type = FlatAdministrativeUnit.ConvertType(pType);
 
@@ -77,7 +77,7 @@ namespace Province_API.Core.Application.Services
         }
 
 
-        public async Task<AdminstrativeUnit> DeleteLocation(string? id)
+        public async Task<AdminstrativeUnit> DeleteLocationAsync(string? id)
         {
             //var unit = GetAdministrativeUnit(id);
 
@@ -107,7 +107,7 @@ namespace Province_API.Core.Application.Services
             return ConvertToDTO(changedLocation);
         }
 
-        public async Task<AdministrativeUnitDTO> SoftDeleteById(string id)
+        public async Task<AdministrativeUnitDTO> SoftDeleteByIdAsync(string id)
         {
             var unit = _unitOfWork.LocationRepository.GetByIdAsync(id).Result;
             

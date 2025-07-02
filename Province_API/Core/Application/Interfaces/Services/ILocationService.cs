@@ -6,17 +6,17 @@ namespace Province_API.Core.Application.Interfaces.Services
 {
     public interface ILocationService
     {
-        Task<List<AdministrativeUnitDTO>> GetChildernAdministrativeUnits(string? parentID);
-        Task<AdministrativeUnitDTO> GetAdministrativeUnit(string id);
+        Task<List<AdministrativeUnitDTO>> GetChildernAdministrativeUnitsAsync(string? parentID);
+        Task<AdministrativeUnitDTO> GetAdministrativeUnitAsync(string id);
 
-        Task<List<AdministrativeUnitDTO>> GetAllProvinces();
+        Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync();
 
-        Task<AdministrativeUnitDTO> AddNewLocation(string pName, string pType, string? pParentID);
+        Task<AdministrativeUnitDTO> AddNewLocationAsync(string pName, string pType, string? pParentID);
 
         Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID);
 
-        Task<AdminstrativeUnit> DeleteLocation(string? id);
+        Task<AdminstrativeUnit> DeleteLocationAsync(string? id);
 
-        Task<AdministrativeUnitDTO> SoftDeleteById(string id);
+        Task<AdministrativeUnitDTO> SoftDeleteByIdAsync(string id);
     }
 }
