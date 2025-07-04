@@ -1,4 +1,5 @@
 ﻿using Province_API.Core.Domain.AdministrativeAggregate;
+using Province_API.Infrastructure.Repositories;
 using Province_API.Infrastructure.Utils;
 
 namespace Province_API.Core.Application.Interfaces.Repositories
@@ -15,9 +16,9 @@ namespace Province_API.Core.Application.Interfaces.Repositories
 
         Task<List<String>> GetID(string entityType);
 
-        Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id);
+        Task<QueryableWrapper<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id);
 
-        Task<List<AdminstrativeUnit>> GetAllProvinces();
+        Task<QueryableWrapper<AdminstrativeUnit>> GetAllProvinces();
 
         Task<bool> IsAvailableAsync(string id);
         Task<bool> HasParentIsDeleted(string id);

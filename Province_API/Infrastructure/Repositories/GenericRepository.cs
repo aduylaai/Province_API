@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Province_API.Core.Application.Interfaces.Repositories;
+using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Data;
 
 namespace Province_API.Infrastructure.Repositories
@@ -22,10 +23,11 @@ namespace Province_API.Infrastructure.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(string id)
+        public async Task<QueryableWrapper<AdminstrativeUnit>> GetByIdAsync(string id)
         {
-            var result =  await _context.Set<T>().FindAsync(id);
-            return result;
+            var result = _context.Set<AdminstrativeUnit>().Where(x => x.Id == id);
+
+            return new QueryableWrapper<AdminstrativeUnit>(result);
         }
 
         public async Task<T> UpdateAsync(T entity)

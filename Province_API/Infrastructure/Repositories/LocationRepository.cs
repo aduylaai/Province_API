@@ -49,22 +49,24 @@ namespace Province_API.Infrastructure.Repositories
         //    return location;
         //}
 
-        public async Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id)
+        public async Task<QueryableWrapper<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id)
         {
 
-            var children = await adminstrativeUnits
-                .Where(x => x.ParentId == id)
-                .ToListAsync();
-            return children;
+            var children = adminstrativeUnits
+                .Where(x => x.ParentId == id);
+            var childrenWrapper = new QueryableWrapper<AdminstrativeUnit>(children);
+
+            return childrenWrapper;
         }
 
-        public async Task<List<AdminstrativeUnit>> GetAllProvinces()
+        public async Task<QueryableWrapper<AdminstrativeUnit>> GetAllProvinces()
         {
-            var provinces = await adminstrativeUnits
-                .Where(u => u.ParentId == null)
-                .ToListAsync();
+            var provinces = adminstrativeUnits
+                .Where(u => u.ParentId == null);
 
-            return provinces;
+            var queryProvinces = new QueryableWrapper<AdminstrativeUnit>(provinces);
+
+            return queryProvinces;
         }
 
         public async Task<List<string>> GetID(string entityType)
@@ -133,7 +135,9 @@ namespace Province_API.Infrastructure.Repositories
         }
 
         public async Task<bool> IsAvailableAsync(string id) {
-            var unit = await GetByIdAsync(id);
+            var unitWrapper = await GetByIdAsync(id);
+            var unit = await unitWrapper.FirstOrDefaultAsync();
+
             if (unit == null || unit.IsDelete || await HasParentIsDeleted(unit.Id))
             {
                 return false;
