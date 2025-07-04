@@ -3,16 +3,19 @@ using Province_API.Core.Application.Interfaces.Repositories;
 using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Data;
 using Province_API.Infrastructure.Utils;
+using System.Text.RegularExpressions;
+using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 namespace Province_API.Infrastructure.Repositories
 {
     public class LocationRepository : ILocationRepository
     {
         private readonly AppDbContext _appDBContext;
-
+        private readonly DbSet<AdminstrativeUnit> adminstrativeUnits;
         public LocationRepository(AppDbContext appDBContext)
         {
             _appDBContext = appDBContext;
+            adminstrativeUnits = appDBContext.AdministrativeUnits;
         }
         public async Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity)
         {
@@ -22,7 +25,7 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task<List<AdminstrativeUnit>> GetAllAsync()
         {
-            var administrativeUnits = await _appDBContext.AdministrativeUnits
+            var administrativeUnits = await adminstrativeUnits
                 .ToListAsync();
 
             return administrativeUnits;
@@ -31,7 +34,7 @@ namespace Province_API.Infrastructure.Repositories
         public async Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id)
         {
 
-            var children = await _appDBContext.AdministrativeUnits
+            var children = await adminstrativeUnits
                 .Where(x => x.ParentId == id)
                 .ToListAsync();
             return children;
@@ -39,7 +42,7 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task<List<AdminstrativeUnit>> GetAllProvinces()
         {
-            var provinces = await _appDBContext.AdministrativeUnits
+            var provinces = await adminstrativeUnits
                 .Where(u => u.ParentId == null)
                 .ToListAsync();
 
@@ -48,23 +51,23 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task<AdminstrativeUnit> GetByIdAsync(string id)
         {
-            var result = await _appDBContext.AdministrativeUnits.FirstOrDefaultAsync(u => u.Id == id);
+            var result = await adminstrativeUnits.FirstOrDefaultAsync(u => u.Id == id);
 
             return result == null ? null : result;
         }
 
         public async Task<List<string>> GetID(string entityType)
         {
-            var id = _appDBContext.GetId(FlatAdministrativeUnit.ConvertType(entityType));
+            var id = GetId(FlatAdministrativeUnit.ConvertType(entityType));
             return await Task.FromResult(new List<string> { id });
         }
 
         public async Task<bool> HasParentIsDeleted(string id)
         {
-            var parent = await _appDBContext.AdministrativeUnits
-                 .FromSqlRaw(@"SELECT * FROM getancestors({0})", id)
-            .AsNoTracking()
-            .ToListAsync();
+            var parent = await adminstrativeUnits
+                            .FromSqlRaw(@"SELECT * FROM getancestors({0})", id)
+                            .AsNoTracking()
+                            .ToListAsync();
 
             return parent.Any(x => x.IsDelete);
 
@@ -78,9 +81,52 @@ namespace Province_API.Infrastructure.Repositories
 
         public async Task<AdminstrativeUnit> UpdateLocationAsync(AdminstrativeUnit location)
         {
-            _appDBContext.AdministrativeUnits.Update(location);
+            adminstrativeUnits.Update(location);
 
             return location;
+        }
+
+
+        private Dictionary<string, int> GetLatestIDsByPrefix()
+        {
+            var result = new Dictionary<string, int>();
+
+            var ids = adminstrativeUnits
+                .Select(x => x.Id)
+                .ToList();
+
+            foreach (var id in ids)
+            {
+                var match = Regex.Match(id, @"^([a-zA-Z]+)(\d+)$"); // Tách prefix và số
+
+                if (match.Success)
+                {
+                    var prefix = match.Groups[1].Value;
+                    var number = int.Parse(match.Groups[2].Value);
+
+                    if (!result.ContainsKey(prefix) || result[prefix] < number)
+                    {
+                        result[prefix] = number;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public string GetId(AdministrativeUnitType type)
+        {
+            var latestIds = GetLatestIDsByPrefix();
+            string prefix = type switch
+            {
+                AdministrativeUnitType.ThanhPho or AdministrativeUnitType.ThanhPhoTrungUong or AdministrativeUnitType.Tinh => "tinh",
+                AdministrativeUnitType.Quan or AdministrativeUnitType.Huyen or AdministrativeUnitType.ThiXa => "huyen",
+                AdministrativeUnitType.Xa or AdministrativeUnitType.Phuong or AdministrativeUnitType.ThiTran => "xa",
+                _ => throw new ArgumentException("Unknown type")
+            };
+
+            int nextNumber = latestIds.ContainsKey(prefix) ? latestIds[prefix] + 1 : 1;
+            return $"{prefix}{nextNumber}";
         }
     }
 }

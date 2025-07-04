@@ -36,46 +36,5 @@ namespace Province_API.Infrastructure.Data
             });
         }
 
-        private Dictionary<string, int> GetLatestIDsByPrefix()
-        {
-            var result = new Dictionary<string, int>();
-
-            var ids = AdministrativeUnits
-                .Select(x => x.Id)
-                .ToList();
-
-            foreach (var id in ids)
-            {
-                var match = Regex.Match(id, @"^([a-zA-Z]+)(\d+)$"); // Tách prefix và số
-
-                if (match.Success)
-                {
-                    var prefix = match.Groups[1].Value;
-                    var number = int.Parse(match.Groups[2].Value);
-
-                    if (!result.ContainsKey(prefix) || result[prefix] < number)
-                    {
-                        result[prefix] = number;
-                    }
-                }
-            }
-
-            return result;
-        }
-
-        public string GetId(AdministrativeUnitType type)
-        {
-            var latestIds = GetLatestIDsByPrefix();
-            string prefix = type switch
-            {
-                AdministrativeUnitType.ThanhPho or AdministrativeUnitType.ThanhPhoTrungUong or AdministrativeUnitType.Tinh => "tinh",
-                AdministrativeUnitType.Quan or AdministrativeUnitType.Huyen or AdministrativeUnitType.ThiXa => "huyen",
-                AdministrativeUnitType.Xa or AdministrativeUnitType.Phuong or AdministrativeUnitType.ThiTran => "xa",
-                _ => throw new ArgumentException("Unknown type")
-            };
-
-            int nextNumber = latestIds.ContainsKey(prefix) ? latestIds[prefix] + 1 : 1;
-            return $"{prefix}{nextNumber}";
-        }
     }
 }
