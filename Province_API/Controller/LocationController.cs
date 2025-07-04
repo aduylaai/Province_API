@@ -22,8 +22,16 @@ namespace Province_API.Controller
         [HttpGet("unit/{parentID}")]
         public async Task<IActionResult> GetChildrenByIdAsync(string parentID, [FromServices] ILocationService _get)
         {
-            var result = await _get.GetChildernAdministrativeUnitsAsync(parentID);
-            return Ok(result);
+            try
+            {
+                var result = await _get.GetChildernAdministrativeUnitsAsync(parentID);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NotFound($"{parentID} not found!");
+            }
+            
         }
 
         [HttpGet("unit/id/{id}")]

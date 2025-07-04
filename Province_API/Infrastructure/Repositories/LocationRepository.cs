@@ -4,32 +4,50 @@ using Province_API.Core.Domain.AdministrativeAggregate;
 using Province_API.Infrastructure.Data;
 using Province_API.Infrastructure.Utils;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using static Province_API.Core.Domain.AdministrativeAggregate.Enums;
 
 namespace Province_API.Infrastructure.Repositories
 {
-    public class LocationRepository : ILocationRepository
+    public class LocationRepository : GenericRepository<AdminstrativeUnit>, ILocationRepository
     {
         private readonly AppDbContext _appDBContext;
         private readonly DbSet<AdminstrativeUnit> adminstrativeUnits;
-        public LocationRepository(AppDbContext appDBContext)
-        {
-            _appDBContext = appDBContext;
+        public LocationRepository(AppDbContext appDBContext) : base(appDBContext) {
             adminstrativeUnits = appDBContext.AdministrativeUnits;
         }
-        public async Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity)
-        {
-            await _appDBContext.AddAsync(entity);
-            return entity;
-        }
+        //{
+        //    _appDBContext = appDBContext;
+        //    adminstrativeUnits = appDBContext.AdministrativeUnits;
+        //}
+        //public async Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity)
+        //{
+        //    await _appDBContext.AddAsync(entity);
+        //    return entity;
+        //}
 
-        public async Task<List<AdminstrativeUnit>> GetAllAsync()
-        {
-            var administrativeUnits = await adminstrativeUnits
-                .ToListAsync();
+        //public async Task<List<AdminstrativeUnit>> GetAllAsync()
+        //{
+        //    var administrativeUnits = await adminstrativeUnits
+        //        .ToListAsync();
 
-            return administrativeUnits;
-        }
+        //    return administrativeUnits;
+        //}
+
+
+        //public async Task<AdminstrativeUnit> GetByIdAsync(string id)
+        //{
+        //    var result = await adminstrativeUnits.FirstOrDefaultAsync(u => u.Id == id);
+
+        //    return result == null ? null : result;
+        //}
+
+        //public async Task<AdminstrativeUnit> UpdateLocationAsync(AdminstrativeUnit location)
+        //{
+        //    adminstrativeUnits.Update(location);
+
+        //    return location;
+        //}
 
         public async Task<List<AdminstrativeUnit>> GetAllChildrenByIdAsync(string id)
         {
@@ -47,13 +65,6 @@ namespace Province_API.Infrastructure.Repositories
                 .ToListAsync();
 
             return provinces;
-        }
-
-        public async Task<AdminstrativeUnit> GetByIdAsync(string id)
-        {
-            var result = await adminstrativeUnits.FirstOrDefaultAsync(u => u.Id == id);
-
-            return result == null ? null : result;
         }
 
         public async Task<List<string>> GetID(string entityType)
@@ -76,14 +87,6 @@ namespace Province_API.Infrastructure.Repositories
         public async Task RemoveAsync(AdminstrativeUnit entity)
         {
             _appDBContext.Remove(entity);
-        }
-
-
-        public async Task<AdminstrativeUnit> UpdateLocationAsync(AdminstrativeUnit location)
-        {
-            adminstrativeUnits.Update(location);
-
-            return location;
         }
 
 
@@ -128,5 +131,15 @@ namespace Province_API.Infrastructure.Repositories
             int nextNumber = latestIds.ContainsKey(prefix) ? latestIds[prefix] + 1 : 1;
             return $"{prefix}{nextNumber}";
         }
+
+        public async Task<bool> IsAvailableAsync(string id) {
+            var unit = await GetByIdAsync(id);
+            if (unit == null || unit.IsDelete || await HasParentIsDeleted(unit.Id))
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }

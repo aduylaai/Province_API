@@ -10,13 +10,15 @@ namespace Province_API.Infrastructure
 {
     public static class DependcyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString) {
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
+        {
 
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
             //services.AddScoped<IAppDBContext>(provider => provider.GetRequiredService<AppDbContext>());
 
             // Fix JsonLocationRepository (Static Json file) or LocationRepository (DB)
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

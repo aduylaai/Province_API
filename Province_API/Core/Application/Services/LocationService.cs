@@ -18,10 +18,7 @@ namespace Province_API.Core.Application.Services
         }
         public async Task<List<AdministrativeUnitDTO>> GetChildernAdministrativeUnitsAsync(string? parentID)
         {
-            if (parentID == null)
-            {
-                return await GetAllProvincesAsync();
-            }
+            if (parentID == null || await _unitOfWork.LocationRepository.IsAvailableAsync(parentID) == false) throw new Exception("Not fouund!");
             else
             {
                 var children = await _unitOfWork.LocationRepository.GetAllChildrenByIdAsync(parentID);
@@ -34,7 +31,7 @@ namespace Province_API.Core.Application.Services
 
             var unit = await _unitOfWork.LocationRepository.GetByIdAsync(id);
 
-            if (unit.ParentId != null && await _unitOfWork.LocationRepository.HasParentIsDeleted(id) || unit.IsDelete)
+            if (unit.IsDelete || unit.ParentId != null && await _unitOfWork.LocationRepository.HasParentIsDeleted(id))
             {
                 return null;
             }
@@ -50,7 +47,7 @@ namespace Province_API.Core.Application.Services
             return dtos;
         }
         //--- CREATE FUNCTION
-         public async Task<AdministrativeUnitDTO> AddNewLocationAsync(string pName, string pType, string? pParentID)
+        public async Task<AdministrativeUnitDTO> AddNewLocationAsync(string pName, string pType, string? pParentID)
         {
             var type = FlatAdministrativeUnit.ConvertType(pType);
 
@@ -65,11 +62,10 @@ namespace Province_API.Core.Application.Services
 
             unit.UpdateID(id);
 
-            var newUnit = await _unitOfWork.LocationRepository.AddAsync(unit);
+            await _unitOfWork.LocationRepository.AddAsync(unit);
             await _unitOfWork.SaveChangesAsync();
 
-            
-            return newUnit.Adapt<AdministrativeUnitDTO>();
+            return unit.Adapt<AdministrativeUnitDTO>();
         }
 
 
@@ -92,11 +88,11 @@ namespace Province_API.Core.Application.Services
         public async Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
             var location = await _unitOfWork.LocationRepository.GetByIdAsync(id);
-            
+
             AdministrativeUnitType changedType = Enum.Parse<Enums.AdministrativeUnitType>(changeType);
             location.UpdateAdministrativeUnit(changeName, changedType, changeParentID);
 
-            var changedLocation = await _unitOfWork.LocationRepository.UpdateLocationAsync(location);
+            var changedLocation = await _unitOfWork.LocationRepository.UpdateAsync(location);
             await _unitOfWork.SaveChangesAsync();
 
 
@@ -106,9 +102,9 @@ namespace Province_API.Core.Application.Services
         public async Task<AdministrativeUnitDTO> SoftDeleteByIdAsync(string id)
         {
             var unit = await _unitOfWork.LocationRepository.GetByIdAsync(id);
-            
+
             unit.MarkAsDelete();
-            await _unitOfWork.LocationRepository.UpdateLocationAsync(unit);
+            await _unitOfWork.LocationRepository.UpdateAsync(unit);
             await _unitOfWork.SaveChangesAsync();
             return unit.Adapt<AdministrativeUnitDTO>();
 

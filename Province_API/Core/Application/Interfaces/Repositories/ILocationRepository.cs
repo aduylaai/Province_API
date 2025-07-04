@@ -3,17 +3,15 @@ using Province_API.Infrastructure.Utils;
 
 namespace Province_API.Core.Application.Interfaces.Repositories
 {
-    public interface ILocationRepository
+    public interface ILocationRepository : IGenericRepository<AdminstrativeUnit>
     {
-        Task<List<AdminstrativeUnit>> GetAllAsync();
+        //Task<List<AdminstrativeUnit>> GetAllAsync();
 
-        Task<AdminstrativeUnit> GetByIdAsync(string id);
+        //Task<AdminstrativeUnit> GetByIdAsync(string id);
         
-        Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity);
+        //Task<AdminstrativeUnit> AddAsync(AdminstrativeUnit entity);
 
         Task RemoveAsync(AdminstrativeUnit entity);
-
-        Task<AdminstrativeUnit> UpdateLocationAsync(AdminstrativeUnit location);
 
         Task<List<String>> GetID(string entityType);
 
@@ -21,6 +19,7 @@ namespace Province_API.Core.Application.Interfaces.Repositories
 
         Task<List<AdminstrativeUnit>> GetAllProvinces();
 
+        Task<bool> IsAvailableAsync(string id);
         Task<bool> HasParentIsDeleted(string id);
     }
 }
