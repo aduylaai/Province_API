@@ -6,14 +6,14 @@ namespace Province_API.Core.Domain.AdministrativeAggregate
 {
     public class AdminstrativeUnit
     {
-        public string Id { get; protected set; }
+        public string Id { get; internal set; }
 
-        public string Name { get; protected set; }
+        public string Name { get; internal set; }
 
-        public string? ParentId { get; protected set; }
-        public AdministrativeUnitType Type { get; protected set; }
+        public string? ParentId { get; internal set; }
+        public AdministrativeUnitType Type { get; internal set; }
 
-        public List<AdminstrativeUnit> Children { get; protected set; } = new List<AdminstrativeUnit>();
+        public List<AdminstrativeUnit> Children { get; internal set; } = new List<AdminstrativeUnit>();
 
         public bool IsDelete { get; protected set; } = false;
         public bool UpdateID(string id) { 

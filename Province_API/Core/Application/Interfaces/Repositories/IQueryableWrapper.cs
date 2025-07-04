@@ -4,7 +4,7 @@
     {
         Task<List<T>> ToListAsync();
 
-        Task<T> FirstOrDefaultAsync();
+        Task<T?> FirstOrDefaultAsync();
 
         Task<int> CountAsync();
     }

@@ -17,7 +17,7 @@ namespace Province_API.Infrastructure.Repositories
             return await _queryable.ToListAsync();
         }
 
-        public async Task<T> FirstOrDefaultAsync()
+        public async Task<T?> FirstOrDefaultAsync()
         {
             return await _queryable.FirstOrDefaultAsync();
         }

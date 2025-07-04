@@ -23,9 +23,9 @@ namespace Province_API.Infrastructure.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<AdminstrativeUnit> GetByIdAsync(string id)
+        public async Task<T?> GetByIdAsync(string id)
         {
-            var result = await _context.Set<AdminstrativeUnit>().Where(x => x.Id == id).FirstOrDefaultAsync();
+            var result = await _context.Set<T>().FindAsync(id);
             return result;
         }
 

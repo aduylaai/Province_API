@@ -43,8 +43,9 @@ namespace Province_API.Core.Application.Services
         }
         public async Task<List<AdministrativeUnitDTO>> GetAllProvincesAsync()
         {
-            var allProvinceWrapper = await _unitOfWork.LocationRepository.GetAllProvinces();
-            var allProvince = allProvinceWrapper.ToListAsync();
+            var allProvinceQuery = await _unitOfWork.LocationRepository.GetAllProvinces();
+            var allProvince = allProvinceQuery.ToListAsync();
+
             var dtos = allProvince.Adapt<List<AdministrativeUnitDTO>>();
             return dtos;
         }
