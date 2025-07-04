@@ -30,8 +30,7 @@ namespace Province_API.Core.Application.Services
         public async Task<AdministrativeUnitDTO> GetAdministrativeUnitAsync(string id)
         {
 
-            var unitWrapper = await _unitOfWork.LocationRepository.GetByIdAsync(id);
-            var unit = await unitWrapper.FirstOrDefaultAsync();
+            var unit = await _unitOfWork.LocationRepository.GetByIdAsync(id);
 
             if (unit.IsDelete || unit.ParentId != null && await _unitOfWork.LocationRepository.HasParentIsDeleted(id))
             {
@@ -90,8 +89,7 @@ namespace Province_API.Core.Application.Services
 
         public async Task<AdministrativeUnitDTO> UpdateLocationAsync(string id, string changeName, string changeType, string? changeParentID)
         {
-            var locationWrapper = await _unitOfWork.LocationRepository.GetByIdAsync(id);
-            var location = await locationWrapper.FirstOrDefaultAsync();
+            var location= await _unitOfWork.LocationRepository.GetByIdAsync(id);
 
             AdministrativeUnitType changedType = Enum.Parse<Enums.AdministrativeUnitType>(changeType);
             location.UpdateAdministrativeUnit(changeName, changedType, changeParentID);
@@ -105,8 +103,7 @@ namespace Province_API.Core.Application.Services
 
         public async Task<AdministrativeUnitDTO> SoftDeleteByIdAsync(string id)
         {
-            var unitWrapper = await _unitOfWork.LocationRepository.GetByIdAsync(id);
-            var unit = await unitWrapper.FirstOrDefaultAsync();
+            var unit = await _unitOfWork.LocationRepository.GetByIdAsync(id);
 
             unit.MarkAsDelete();
             await _unitOfWork.LocationRepository.UpdateAsync(unit);

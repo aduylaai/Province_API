@@ -135,8 +135,7 @@ namespace Province_API.Infrastructure.Repositories
         }
 
         public async Task<bool> IsAvailableAsync(string id) {
-            var unitWrapper = await GetByIdAsync(id);
-            var unit = await unitWrapper.FirstOrDefaultAsync();
+            var unit = await GetByIdAsync(id);
 
             if (unit == null || unit.IsDelete || await HasParentIsDeleted(unit.Id))
             {

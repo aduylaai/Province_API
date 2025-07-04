@@ -23,11 +23,10 @@ namespace Province_API.Infrastructure.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<QueryableWrapper<AdminstrativeUnit>> GetByIdAsync(string id)
+        public async Task<AdminstrativeUnit> GetByIdAsync(string id)
         {
-            var result = _context.Set<AdminstrativeUnit>().Where(x => x.Id == id);
-
-            return new QueryableWrapper<AdminstrativeUnit>(result);
+            var result = await _context.Set<AdminstrativeUnit>().Where(x => x.Id == id).FirstOrDefaultAsync();
+            return result;
         }
 
         public async Task<T> UpdateAsync(T entity)
